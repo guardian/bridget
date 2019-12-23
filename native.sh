@@ -13,9 +13,9 @@ thrift --gen swift -r mobile-apps-thrift/thrift/webview.thrift
 
 # Commit changes
 git clone https://github.com/guardian/mobile-apps-thrift-swift.git
-rm -rf mobile-apps-thrift-swift/Sources/WebviewThrift
-mkdir -p mobile-apps-thrift-swift/Sources/WebviewThrift
-cp -r gen-swift/*.swift mobile-apps-thrift-swift/Sources/WebviewThrift/
+rm -rf mobile-apps-thrift-swift/Sources/MobileAppsThriftSwift
+mkdir -p mobile-apps-thrift-swift/Sources/MobileAppsThriftSwift
+cp -r gen-swift/*.swift mobile-apps-thrift-swift/Sources/MobileAppsThriftSwift/
 cd mobile-apps-thrift-swift
 git add *.swift
 git commit -m "Update Swift models"

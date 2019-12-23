@@ -6,11 +6,11 @@ on:
       - 'thrift/**'
 
 jobs:
-  release-on-push:
+  build:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: rymndhng/release-on-push-action@master
-        with:
-          strategy: minor
+    - uses: actions/checkout@master
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

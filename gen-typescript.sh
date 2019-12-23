@@ -6,6 +6,3 @@ cd mobile-apps-thrift-typescript
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 npm init -y
 npm publish --access public
-
-
-

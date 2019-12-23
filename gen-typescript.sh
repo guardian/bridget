@@ -9,11 +9,12 @@ npm version minor
 npm version minor
 npm version minor
 npm version minor
+npm version minor
 npm publish --access public
 
 # update git with latest version
-git config --global "GuardianAndroid"
-git config --global user.email "<>"
+git config --global user.email "GuardianAndroid"
+git config --global user.name "GuardianAndroid"
 
 git add package.json
 git commit -m "increase version number"

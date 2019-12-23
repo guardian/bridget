@@ -6,4 +6,10 @@ cd mobile-apps-thrift-typescript
 npm init -y
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 npm version minor
+npm version minor
 npm publish --access public
+
+# update git with latest version
+git add package.json
+git commit -m "increase version number"
+git push origin master

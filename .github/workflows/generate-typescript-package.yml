@@ -6,7 +6,7 @@ on:
     - 'thrift/**'
   
 jobs:
-  generate-client-packages:
+  generate-typescript-package:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,10 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
-    uses: actions/setup-node@v1
-    with:
-      node-version: ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
     - name: install
-    run: npm install
+      run: npm install
     - name: generate and publish
-    run: ./gen-typescript.sh
+      run: ./gen-typescript.sh

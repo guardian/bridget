@@ -3,7 +3,7 @@ on:
     branches:
     - master
     paths:
-    - 'thrift/**'
+    - 'thrift/test/**'
   
 jobs:
   generate-typescript-package:

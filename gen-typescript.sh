@@ -10,12 +10,15 @@ npm version minor
 npm version minor
 npm version minor
 npm version minor
+npm version minor
 npm publish --access public
 
 # update git with latest version
 git config --global user.email "GuardianAndroid"
 git config --global user.name "GuardianAndroid"
 
+git clone https://github.com/guardian/mobile-apps-thrift.git
+cd mobile-apps-thrift
 git add package.json
 git commit -m "increase version number"
 git push origin master

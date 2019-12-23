@@ -5,4 +5,5 @@ node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceD
 cd mobile-apps-thrift-typescript
 npm init -y
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+npm version minor
 npm publish --access public

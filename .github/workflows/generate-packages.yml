@@ -32,6 +32,6 @@ jobs:
     needs: bump-tag
     runs-on: ubuntu-latest
     steps:
-    - uses: guardian/generate-native-package@master
+    - uses: guardian/generate-native-package@v1
       with:
         platform: 'ios'

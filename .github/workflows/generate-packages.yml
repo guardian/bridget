@@ -22,11 +22,11 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
     - name: install
-    run: npm install
+      run: npm install
     - name: generate and publish
-    run: ./gen-typescript.sh
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: ./gen-typescript.sh
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   generate-swift-package:
     needs: bump-tag

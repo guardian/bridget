@@ -1,9 +1,9 @@
 on:
-    push:
-      branches:
-      - master
-      paths:
-      - 'thrift/**'
+  push:
+    branches:
+    - master
+    paths:
+    - 'thrift/**'
 
 jobs:
   bump-tag:
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
     matrix:
-        node-version: [12.x]
+      node-version: [12.x]
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -32,10 +32,10 @@ jobs:
     - name: generate and publish
     run: ./gen-typescript.sh
     env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   generate-swift-package:
     needs: bump-tag
     runs:
-        using: 'docker'
-        image: 'Dockerfile'
+      using: 'docker'
+      image: 'Dockerfile'

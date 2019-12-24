@@ -1,0 +1,10 @@
+on:
+    push:
+      branches:
+      - master
+      paths:
+      - 'thrift/**'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

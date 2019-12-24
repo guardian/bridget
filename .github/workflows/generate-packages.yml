@@ -30,6 +30,8 @@ jobs:
 
   generate-swift-package:
     needs: bump-tag
-    runs:
-      using: 'docker'
-      image: 'Dockerfile'
+    runs-on: ubuntu-latest
+    steps:
+      uses: guardian/generate-swift-package@master
+      with:
+        platform: 'ios'

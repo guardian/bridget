@@ -16,6 +16,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   generate-typescript-package:
+    needs: bump-tag
     runs-on: ubuntu-latest
     strategy:
     matrix:
@@ -33,11 +34,8 @@ jobs:
     env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-        runs:
-            using: 'docker'
-            image: 'Dockerfile'
-
   generate-swift-package:
+    needs: bump-tag
     runs:
         using: 'docker'
         image: 'Dockerfile'

@@ -1,0 +1,13 @@
+name: 'Generate native package'
+description: 'Generates native package and publishes'
+inputs:
+  platform:
+    description: 'Platform to generate and publish package'
+    required: true
+    default: 'ios'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.access_token }}
+    - ${{ inputs.platform }}

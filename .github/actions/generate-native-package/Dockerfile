@@ -42,4 +42,5 @@ RUN buildDeps=" \
 
 COPY native.sh /native.sh
 COPY credential-helper.sh /credential-helper.sh
+RUN ["chmod", "+x", "/native.sh"]
 ENTRYPOINT ["/native.sh"]

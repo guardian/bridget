@@ -8,5 +8,4 @@ struct AdSlot {
 service Native {
     void insertAdverts(1:list<AdSlot> adSlots),
     i32 webviewVersionNumber(),
-    i32 test(),
 }

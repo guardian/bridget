@@ -33,7 +33,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: ./.github/actions/generate-native-package
-    - uses: guardian/generate-native-package@v6
       with:
         access_token: ${{ secrets.ACCESS_TOKEN }}
         platform: 'ios'

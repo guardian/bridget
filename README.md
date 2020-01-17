@@ -21,3 +21,4 @@ The Swift and Java packages are generated and published using this [GitHub actio
 3. Make a pull request. It would be good to get a review from all teams who would need to implement or call the function. e.g. Android, iOS and apps-rendering
 4. Merging into master will automatically run the GitHub actions to publish packages
 5. If you don't see the published packages, start by inspecting the GitHub action started on the branch that was merged into master
+6. Bump the version in your repo (iOS, Android or apps-rendering) and implement the function or make the function call. Make sure the function is always available in the current environment. This can be done by checking the thrift version number of the webView or native layer

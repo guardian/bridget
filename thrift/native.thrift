@@ -7,5 +7,5 @@ struct AdSlot {
 
 service Native {
     void insertAdverts(1:list<AdSlot> adSlots),
-    i32 appThriftPackageVersion(),
+    i32 nativeThriftPackageVersion(),
 }

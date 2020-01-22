@@ -9,7 +9,7 @@ echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 git fetch --all
 CURRENT_FULL_VERSION="$(git describe --tags --abbrev=0)"
 
-if grep -Fxq "$CURRENT_FULL_VERSION" ../thrift/native.thrift
+if grep -Fxq "$CURRENT_FULL_VERSION" ../thrift/native.thrift ../thrift/webview.thrift
 then
     npm version ${CURRENT_FULL_VERSION}
     npm publish --access public

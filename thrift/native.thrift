@@ -1,3 +1,5 @@
+const i32 THRIFT_PACKAGE_VERSION = "0.0.0"
+
 struct AdSlot {
     1: required i32 x;
     2: required i32 y;

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # generate TypeScript Native Thrift files 
 node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceDir thrift --outDir mobile-apps-thrift-typescript ../thrift/native.thrift
 

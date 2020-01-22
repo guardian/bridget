@@ -1,3 +1,3 @@
 service Webview {
-    i32 webviewThriftVersionNumber(),
+    i32 webviewThriftPackage(),
 }

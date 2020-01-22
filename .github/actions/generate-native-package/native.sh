@@ -16,7 +16,7 @@ cd mobile-apps-thrift
 CURRENT_VERSION="$(git describe --tags --abbrev=0)"
 cd ../
 
-if [grep "$CURRENT_FULL_VERSION" mobile-apps-thrift/thrift/native.thrift] && [grep "$CURRENT_FULL_VERSION" mobile-apps-thrift/thrift/webview.thrift]
+if [ grep "$CURRENT_FULL_VERSION" mobile-apps-thrift/thrift/native.thrift ] && [ grep "$CURRENT_FULL_VERSION" mobile-apps-thrift/thrift/webview.thrift ]
 then
     #
 else

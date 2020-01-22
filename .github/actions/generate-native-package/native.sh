@@ -16,14 +16,6 @@ cd mobile-apps-thrift
 CURRENT_VERSION="$(git describe --tags --abbrev=0)"
 cd ../
 
-if [ grep "$CURRENT_FULL_VERSION" mobile-apps-thrift/thrift/native.thrift ] && [ grep "$CURRENT_FULL_VERSION" mobile-apps-thrift/thrift/webview.thrift ]
-then
-    echo "Correct versions found"
-else
-    echo "THRIFT_PACKAGE_VERSION needs to be bumped to correct version: $CURRENT_FULL_VERSION"
-    exit 1
-fi
-
 # Platform tasks
 if [ "$PLATFORM" == "ios" ]; then
     # Generate Swift Files (these will be output into gen-swift folder)

@@ -29,12 +29,13 @@ if [ "$PLATFORM" == "ios" ]; then
     cp -r gen-swift/*.swift mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift/
     cd mobile-apps-thrift-swift
 
-    git add Sources/mobile-apps-thrift-swift/*.swift
-    git commit -m "Update Swift models $CURRENT_VERSION"
-    git tag $CURRENT_VERSION
-    git push origin master
-    git push --tags
-
+    if [[ -n `git diff` ]]; then
+        git add Sources/mobile-apps-thrift-swift/*.swift
+        git commit -m "Update Swift models $CURRENT_VERSION"
+        git tag $CURRENT_VERSION
+        git push origin master
+        git push --tags
+    fi
 elif [ "$PLATFORM" == "android" ]; then
     thrift --gen java -r mobile-apps-thrift/thrift/webview.thrift
     ls gen-java

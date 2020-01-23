@@ -8,4 +8,7 @@ struct AdSlot {
 service Native {
     void insertAdverts(1:list<AdSlot> adSlots),
     i32 nativeThriftPackageVersion(),
+    void followAuthor(),
+    void unfollowAuthor(),
+    bool isPremiumUser(),
 }

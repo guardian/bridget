@@ -18,17 +18,19 @@ cd ../
 
 # Platform tasks
 if [ "$PLATFORM" == "ios" ]; then
-    # Generate Swift Files (these will be output into gen-swift folder)
-    thrift --gen swift -r mobile-apps-thrift/thrift/webview.thrift
-    thrift --gen swift -r mobile-apps-thrift/thrift/native.thrift
-
-    # Commit changes
+    
+    # Check out the Swift repo and delete all existing source files
     git clone https://github.com/guardian/mobile-apps-thrift-swift.git
     rm -rf mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift
     mkdir -p mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift
-    cp -r gen-swift/*.swift mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift/
-    cd mobile-apps-thrift-swift
 
+    # Generate new Swift source files
+    thrift --gen swift -r -out mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift mobile-apps-thrift/thrift/webview.thrift
+    thrift --gen swift:async_clients -r -out mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift mobile-apps-thrift/thrift/native.thrift
+
+    # Commit changes
+    cd mobile-apps-thrift-swift
+    
     if [[ -n `git diff` ]]; then
         git add Sources/mobile-apps-thrift-swift/*.swift
         git commit -m "Update Swift models $CURRENT_VERSION"

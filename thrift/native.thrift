@@ -7,6 +7,8 @@ struct AdSlot {
 
 struct Image {
     1: required string url;
+    2: optional string caption;
+    3: optional string credit;
 }
 
 service Native {

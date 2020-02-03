@@ -18,9 +18,10 @@ struct Image {
 service Native {
     void insertAdverts(1:list<AdSlot> adSlots),
     i32 nativeThriftPackageVersion(),
-    void follow(topic: Topic),
-    void unfollow(topic: Topic),
-    bool isFollowing(topic: Topic),
+    void launchFrictionScreen(),
+    void follow(1:Topic topic),
+    void unfollow(1:Topic topic),
+    bool isFollowing(1:Topic topic),
     bool isPremiumUser(),
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
 }

@@ -14,5 +14,6 @@ struct Image {
 service Native {
     void insertAdverts(1:list<AdSlot> adSlots),
     i32 nativeThriftPackageVersion(),
+    bool isPremiumUser(),
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
 }

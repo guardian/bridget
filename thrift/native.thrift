@@ -6,7 +6,13 @@ struct AdSlot {
 }
 
 struct Topic {
-	1: required string id;
+    1: required string id;
+}
+
+struct Image {
+    1: required string url;
+    2: optional string caption;
+    3: optional string credit;
 }
 
 service Native {
@@ -15,4 +21,6 @@ service Native {
     void follow(topic: Topic),
     void unfollow(topic: Topic),
     bool isFollowing(topic: Topic),
+    bool isPremiumUser(),
+    void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
 }

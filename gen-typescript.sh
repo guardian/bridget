@@ -1,5 +1,6 @@
 # generate TypeScript Native Thrift files 
 node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceDir thrift --outDir mobile-apps-thrift-typescript ../thrift/native.thrift
+node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceDir thrift --outDir mobile-apps-thrift-typescript ../thrift/webview.thrift
 
 # publish TypeScript package to npm
 cd mobile-apps-thrift-typescript

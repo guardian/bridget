@@ -26,7 +26,7 @@ if [ "$PLATFORM" == "ios" ]; then
 
     # Generate new Swift source files
     thrift --gen swift -r -out mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift mobile-apps-thrift/thrift/webview.thrift
-    thrift --gen swift:async_clients -r -out mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift mobile-apps-thrift/thrift/native.thrift
+    thrift --gen swift:async_servers -r -out mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift mobile-apps-thrift/thrift/native.thrift
 
     # Commit changes
     cd mobile-apps-thrift-swift

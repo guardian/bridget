@@ -1,3 +1,5 @@
+namespace java com.theguardian.webview.thrift
+
 struct AdSlot {
     1: required i32 x;
     2: required i32 y;

@@ -15,6 +15,13 @@ struct Image {
     3: optional string credit;
 }
 
+struct Epic {
+	1: required string title;
+	2: required string body;
+	3: required string firstButton;
+	4: optional string secondButton;
+}
+
 service Native {
     void insertAdverts(1:list<AdSlot> adSlots),
     i32 nativeThriftPackageVersion(),
@@ -24,4 +31,5 @@ service Native {
     bool isFollowing(1:Topic topic),
     bool isPremiumUser(),
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
+    list<Epic> getEpics(),
 }

@@ -7,6 +7,6 @@ struct Epic {
 
 service Webview {
     i32 webviewThriftPackage(),
-    void insertEpics(1:list<Epic> epics),
 	void insertEpic(1:Epic epic),
+	void updateFontSize(1:i32 size),
 }

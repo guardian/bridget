@@ -23,11 +23,13 @@ struct Epic {
 }
 
 service Native {
-    void insertAdverts(1:list<AdSlot> adSlots),
     i32 nativeThriftPackageVersion(),
+    void insertAdverts(1:list<AdSlot> adSlots),
+    void updateAdverts(1:list<AdSlot> adSlots),
     void launchFrictionScreen(),
     void follow(1:Topic topic),
     void unfollow(1:Topic topic),
+    void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
     bool isFollowing(1:Topic topic),
     bool isPremiumUser(),
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),

@@ -22,6 +22,10 @@ struct Epic {
 	4: optional string secondButton;
 }
 
+struct MaybeEpic {
+    1: optional Epic epic;
+}
+
 service Native {
     i32 nativeThriftPackageVersion(),
     void insertAdverts(1:list<AdSlot> adSlots),
@@ -32,5 +36,5 @@ service Native {
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
     bool isFollowing(1:Topic topic),
     bool isPremiumUser(),
-    list<Epic> getEpics(),
+    MaybeEpic getEpics(),
 }

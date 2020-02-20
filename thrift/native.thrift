@@ -32,6 +32,5 @@ service Native {
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
     bool isFollowing(1:Topic topic),
     bool isPremiumUser(),
-    void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
     list<Epic> getEpics(),
 }

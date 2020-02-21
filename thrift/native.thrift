@@ -37,4 +37,5 @@ service Native {
     bool isFollowing(1:Topic topic),
     bool isPremiumUser(),
     MaybeEpic getEpics(),
+    void epicSeen(),
 }

@@ -1,4 +1,4 @@
-# mobile-apps-thrift
+# Bridget
 This repo contains the thrift definitions defining the API between native layers (iOS, Android) and [Webview](https://github.com/guardian/apps-rendering).
 
 The repo is also responsible for generating and publishing packages to be used by iOS, Android and the Webview.
@@ -22,3 +22,6 @@ The Swift and Java packages are generated and published using this [GitHub actio
 4. Merging into master will automatically run the GitHub actions to publish packages
 5. If you don't see the published packages, start by inspecting the GitHub action started on the branch that was merged into master
 6. Bump the version in your repo (iOS, Android or apps-rendering) and implement the function or make the function call. Make sure the function is always available in the current environment. This can be done by checking the thrift version number of the webView or native layer
+
+## About the name
+The name Bridget was chosen out of a list of a dozen suggestions, containing mostly bridge related puns.

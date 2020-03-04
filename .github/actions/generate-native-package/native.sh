@@ -27,7 +27,7 @@ if [ "$PLATFORM" == "ios" ]; then
     rm -rf bridget-swift/Sources/Bridget
     mkdir -p bridget-swift/Sources/Bridget
     cp -r gen-swift/*.swift bridget-swift/Sources/Bridget/
-    cd Bridget
+    cd bridget-swift
 
     if [[ -n `git diff` ]]; then
         git add Sources/Bridget/*.swift

@@ -19,5 +19,6 @@
   "devDependencies": {
     "@creditkarma/thrift-server-core": "^0.15.3",
     "@creditkarma/thrift-typescript": "^3.7.6"
-  }
+  },
+  "keywords": []
 }

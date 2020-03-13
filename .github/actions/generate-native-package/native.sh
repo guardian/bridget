@@ -9,26 +9,26 @@ git config --global credential.helper "/bin/bash /credential-helper.sh"
 git config --global user.email '<>'
 
 # Checkout thrift files
-git clone https://github.com/guardian/mobile-apps-thrift.git
+git clone https://github.com/guardian/bridget.git
 
 # Set tag from mobile-apps-thrift
-cd mobile-apps-thrift
+cd bridget
 CURRENT_VERSION="$(git describe --tags --abbrev=0)"
 cd ../
 
 # Platform tasks
 if [ "$PLATFORM" == "ios" ]; then
-    # Generate Swift Files (these will be output into gen-swift folder)
-    thrift --gen swift -r mobile-apps-thrift/thrift/webview.thrift
-    thrift --gen swift -r mobile-apps-thrift/thrift/native.thrift
 
-    # Commit changes
+    # Check out the Swift repo and delete all existing source files
     git clone https://github.com/guardian/bridget-swift.git
     rm -rf bridget-swift/Sources/Bridget
     mkdir -p bridget-swift/Sources/Bridget
-    cp -r gen-swift/*.swift bridget-swift/Sources/Bridget/
-    cd bridget-swift
 
+    thrift --gen swift -r -out bridget-swift/Sources/Bridget bridget/thrift/webview.thrift
+    thrift --gen swift:async_servers -r -out bridget-swift/Sources/Bridget bridget/thrift/native.thrift
+
+    # Commit changes
+    cd bridget-swift
     if [[ -n `git diff` ]]; then
         git add Sources/Bridget/*.swift
         git commit -m "Update Swift models $CURRENT_VERSION"
@@ -37,7 +37,7 @@ if [ "$PLATFORM" == "ios" ]; then
         git push --tags
     fi
 elif [ "$PLATFORM" == "android" ]; then
-    thrift --gen java -r mobile-apps-thrift/thrift/webview.thrift
+    thrift --gen java -r bridget/thrift/webview.thrift
     ls gen-java
 else
     echo "Unrecognised platform. Please specify \"ios\" or \"android\" as the second argument"

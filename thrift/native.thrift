@@ -38,4 +38,5 @@ service Native {
     bool isPremiumUser(),
     MaybeEpic getEpics(),
     void epicSeen(),
+    void test(),
 }

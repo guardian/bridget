@@ -23,14 +23,14 @@ if [ "$PLATFORM" == "ios" ]; then
     thrift --gen swift -r mobile-apps-thrift/thrift/native.thrift
 
     # Commit changes
-    git clone https://github.com/guardian/mobile-apps-thrift-swift.git
-    rm -rf mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift
-    mkdir -p mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift
-    cp -r gen-swift/*.swift mobile-apps-thrift-swift/Sources/mobile-apps-thrift-swift/
-    cd mobile-apps-thrift-swift
+    git clone https://github.com/guardian/bridget-swift.git
+    rm -rf bridget-swift/Sources/Bridget
+    mkdir -p bridget-swift/Sources/Bridget
+    cp -r gen-swift/*.swift bridget-swift/Sources/Bridget/
+    cd bridget-swift
 
     if [[ -n `git diff` ]]; then
-        git add Sources/mobile-apps-thrift-swift/*.swift
+        git add Sources/Bridget/*.swift
         git commit -m "Update Swift models $CURRENT_VERSION"
         git tag $CURRENT_VERSION
         git push origin master

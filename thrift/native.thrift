@@ -26,7 +26,7 @@ struct MaybeEpic {
     1: optional Epic epic;
 }
 
-service Native {
+service Version {
     i32 nativeThriftPackageVersion()
 }
 

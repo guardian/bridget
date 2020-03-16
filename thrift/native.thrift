@@ -26,17 +26,31 @@ struct MaybeEpic {
     1: optional Epic epic;
 }
 
-service Native {
-    i32 nativeThriftPackageVersion(),
+service Environment {
+    i32 nativeThriftPackageVersion()
+}
+
+service Commercial {
     void insertAdverts(1:list<AdSlot> adSlots),
-    void updateAdverts(1:list<AdSlot> adSlots),
+    void updateAdverts(1:list<AdSlot> adSlots)
+}
+
+service Acquistions {
     void launchFrictionScreen(),
+    MaybeEpic getEpics(),
+    void epicSeen()
+}
+
+service Notifications {
     void follow(1:Topic topic),
     void unfollow(1:Topic topic),
-    void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex),
     bool isFollowing(1:Topic topic),
-    bool isPremiumUser(),
-    MaybeEpic getEpics(),
-    void epicSeen(),
-    void test(),
+}
+
+service User {
+    bool isPremium()
+}
+
+service Gallery {
+    void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex)
 }

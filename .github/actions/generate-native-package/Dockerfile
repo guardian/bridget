@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV THRIFT_VERSION v0.14.0-gu4
+ENV THRIFT_VERSION v0.14.0-gu5
 
 RUN apt-get update
 RUN apt-get install -y git

@@ -28,7 +28,6 @@ struct MaybeEpic {
 
 service Environment {
     i32 nativeThriftPackageVersion()
-    void dummy()
 }
 
 service Commercial {

@@ -9,12 +9,15 @@ npm init -y
 echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 npx json -I -f package.json -e 'this.types="index.d.ts"'
 
-# generate JavaScript files
+# generate JavaScript files with type declarations
 npm i typescript -g
-npx tsc --init --declaration
+npx tsc --init --declaration --target ES2016
 npx tsc
 
-# use repo tags for version
+# remove TypeScript files
+ls | grep "^[A-Za-z]*.ts" | xargs rm
+
+# use repo tag for version
 git fetch --all
 CURRENT_FULL_VERSION="$(git describe --tags --abbrev=0)"
 

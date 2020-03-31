@@ -18,7 +18,10 @@
   "homepage": "https://github.com/guardian/mobile-apps-thrift#readme",
   "devDependencies": {
     "@creditkarma/thrift-server-core": "^0.15.3",
-    "@creditkarma/thrift-typescript": "^3.7.6"
+    "@creditkarma/thrift-typescript": "^3.7.6",
+    "json": "^9.0.6",
+    "typescript": "^3.8.3"
   },
-  "keywords": []
+  "keywords": [],
+  "dependencies": {}
 }

@@ -1,6 +1,5 @@
 # generate TypeScript Thrift files
 node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceDir thrift --outDir bridget ../thrift/native.thrift
-node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceDir thrift --outDir bridget ../thrift/webview.thrift
 
 cd bridget
 

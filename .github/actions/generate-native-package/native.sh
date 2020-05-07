@@ -24,7 +24,6 @@ if [ "$PLATFORM" == "ios" ]; then
     rm -rf bridget-swift/Sources/Bridget
     mkdir -p bridget-swift/Sources/Bridget
 
-    thrift --gen swift -r -out bridget-swift/Sources/Bridget bridget/thrift/webview.thrift
     thrift --gen swift:async_servers -r -out bridget-swift/Sources/Bridget bridget/thrift/native.thrift
 
     # Commit changes
@@ -37,7 +36,6 @@ if [ "$PLATFORM" == "ios" ]; then
         git push --tags
     fi
 elif [ "$PLATFORM" == "android" ]; then
-    thrift --gen java -r bridget/thrift/webview.thrift
     ls gen-java
 else
     echo "Unrecognised platform. Please specify \"ios\" or \"android\" as the second argument"

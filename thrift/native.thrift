@@ -31,8 +31,7 @@ service Environment {
 }
 
 service Commercial {
-    void insertAdverts(1:list<AdSlot> adSlots),
-    void updateAdverts(1:list<AdSlot> adSlots)
+    void insertAdverts(1:list<AdSlot> adSlots)
 }
 
 service Acquistions {

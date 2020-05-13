@@ -11,7 +11,7 @@
     "url": "git+https://github.com/guardian/mobile-apps-thrift.git"
   },
   "author": "",
-  "license": "Apache 2",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/guardian/mobile-apps-thrift/issues"
   },

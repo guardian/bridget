@@ -7,6 +7,8 @@ struct AdSlot {
 
 struct Topic {
     1: required string id;
+    2: required string displayName;
+    3: required string type;
 }
 
 struct Image {

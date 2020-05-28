@@ -54,5 +54,5 @@ service User {
 }
 
 service Gallery {
-    void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex)
+    void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex, 3:string articleTitle)
 }

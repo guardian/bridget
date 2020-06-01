@@ -44,8 +44,8 @@ service Acquistions {
 }
 
 service Notifications {
-    void follow(1:Topic topic),
-    void unfollow(1:Topic topic),
+    bool follow(1:Topic topic),
+    bool unfollow(1:Topic topic),
     bool isFollowing(1:Topic topic),
 }
 

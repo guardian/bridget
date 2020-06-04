@@ -29,7 +29,7 @@ struct MaybeEpic {
 }
 
 service Environment {
-    i32 nativeThriftPackageVersion()
+    string nativeThriftPackageVersion()
 }
 
 service Commercial {

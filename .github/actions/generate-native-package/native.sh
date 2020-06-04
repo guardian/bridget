@@ -17,8 +17,8 @@ CURRENT_VERSION="$(git describe --tags --abbrev=0)"
 cd ../
 
 # Add version const to thrift file
-echo "\n\n" > bridget/thrift/native.thrift
-echo "const string BRIDGET_VERSION = $CURRENT_VERSION;" > bridget/thrift/native.thrift
+echo "" >> bridget/thrift/native.thrift
+echo "const string BRIDGET_VERSION = \"$CURRENT_VERSION\"" >>  bridget/thrift/native.thrift
 
 # Platform tasks
 if [ "$PLATFORM" == "ios" ]; then

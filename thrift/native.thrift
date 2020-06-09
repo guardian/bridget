@@ -37,7 +37,7 @@ service Commercial {
     void updateAdverts(1:list<AdSlot> adSlots)
 }
 
-service Acquistions {
+service Acquisitions {
     void launchFrictionScreen(),
     MaybeEpic getEpics(),
     void epicSeen()

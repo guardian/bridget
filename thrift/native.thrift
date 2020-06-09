@@ -3,7 +3,7 @@ struct AdSlot {
     2: required i32 y;
     3: optional i32 height;
     4: optional i32 width;
-    5: optional map<string,string> adTargeting;
+    5: optional map<string,string> targetingParams;
 }
 
 struct Topic {

@@ -29,6 +29,16 @@ struct MaybeEpic {
     1: optional Epic epic;
 }
 
+struct VideoSlot {
+    1: required i32 x;
+    2: required i32 y;
+    3: optional i32 height;
+    4: optional i32 width;
+    5: required string videoId;
+    5: required string posterUrl;
+    5: required i32 duration;
+}
+
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -56,4 +66,9 @@ service User {
 
 service Gallery {
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex, 3:string articleTitle)
+}
+
+service Videos {
+    void insertVideos(1:list<VideoSlot> videoSlots),
+    void updateVideos(1:list<VideoSlot> videoSlots)
 }

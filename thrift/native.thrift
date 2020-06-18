@@ -1,9 +1,13 @@
-struct AdSlot {
+struct Rect {
     1: required i32 x;
     2: required i32 y;
-    3: optional i32 height;
-    4: optional i32 width;
-    5: optional map<string,string> targetingParams;
+    3: required i32 height;
+    4: required i32 width;
+}
+
+struct AdSlot {
+    1: required Rect rect;
+    2: optional map<string,string> targetingParams;
 }
 
 struct Topic {
@@ -30,13 +34,10 @@ struct MaybeEpic {
 }
 
 struct VideoSlot {
-    1: required i32 x;
-    2: required i32 y;
-    3: optional i32 height;
-    4: optional i32 width;
-    5: required string videoId;
-    5: required string posterUrl;
-    5: required i32 duration;
+    1: required Rect rect;
+    2: required string videoId;
+    3: required string posterUrl;
+    4: required i32 duration;
 }
 
 service Environment {

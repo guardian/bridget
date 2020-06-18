@@ -40,32 +40,19 @@ struct VideoSlot {
     4: required i32 duration;
 }
 
-enum MetricKind {
-    FirstPaint = 0;
-    FirstContentfulPaint = 1;
-    Font = 2;
-}
-
-struct MetricFirstPaint {
-    1: required MetricKind kind;
-    2: required double time;
-}
-
-struct MetricFirstContentfulPaint {
-    1: required MetricKind kind;
-    2: required double time;
+struct MetricPaint {
+    1: required double time;
 }
 
 struct MetricFont {
-    1: required MetricKind kind;
-    2: required double duration;
-    3: optional i32 size;
-    4: optional string name;
+    1: required double duration;
+    2: optional i32 size;
+    3: optional string name;
 }
 
 union Metric {
-    1: MetricFirstPaint firstPaint;
-    2: MetricFirstContentfulPaint firstContentfulPaint;
+    1: MetricPaint firstPaint;
+    2: MetricPaint firstContentfulPaint;
     3: MetricFont font;
 }
 

@@ -1,9 +1,13 @@
-struct AdSlot {
+struct Rect {
     1: required i32 x;
     2: required i32 y;
-    3: optional i32 height;
-    4: optional i32 width;
-    5: optional map<string,string> targetingParams;
+    3: required i32 height;
+    4: required i32 width;
+}
+
+struct AdSlot {
+    1: required Rect rect;
+    2: optional map<string,string> targetingParams;
 }
 
 struct Topic {
@@ -27,6 +31,13 @@ struct Epic {
 
 struct MaybeEpic {
     1: optional Epic epic;
+}
+
+struct VideoSlot {
+    1: required Rect rect;
+    2: required string videoId;
+    3: required string posterUrl;
+    4: required i32 duration;
 }
 
 service Environment {
@@ -56,4 +67,9 @@ service User {
 
 service Gallery {
     void launchSlideshow(1:list<Image> images, 2:i32 selectedIndex, 3:string articleTitle)
+}
+
+service Videos {
+    void insertVideos(1:list<VideoSlot> videoSlots),
+    void updateVideos(1:list<VideoSlot> videoSlots)
 }

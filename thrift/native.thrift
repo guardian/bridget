@@ -40,6 +40,22 @@ struct VideoSlot {
     4: required i32 duration;
 }
 
+struct MetricPaint {
+    1: required double time;
+}
+
+struct MetricFont {
+    1: required double duration;
+    2: optional i32 size;
+    3: optional string name;
+}
+
+union Metric {
+    1: MetricPaint firstPaint;
+    2: MetricPaint firstContentfulPaint;
+    3: MetricFont font;
+}
+
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -72,4 +88,8 @@ service Gallery {
 service Videos {
     void insertVideos(1:list<VideoSlot> videoSlots),
     void updateVideos(1:list<VideoSlot> videoSlots)
+}
+
+service Metrics {
+    void sendMetrics(1:list<Metric> metrics)
 }

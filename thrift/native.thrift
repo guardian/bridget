@@ -1,8 +1,8 @@
 struct Rect {
-    1: required i32 x;
-    2: required i32 y;
-    3: required i32 height;
-    4: required i32 width;
+    1: required double x;
+    2: required double y;
+    3: required double height;
+    4: required double width;
 }
 
 struct AdSlot {

@@ -18,8 +18,10 @@ struct Topic {
 
 struct Image {
     1: required string url;
-    2: optional string caption;
-    3: optional string credit;
+    2: required double width;
+    3: required double height;
+    4: optional string caption;
+    5: optional string credit;
 }
 
 struct Epic {

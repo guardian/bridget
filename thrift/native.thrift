@@ -39,7 +39,7 @@ struct VideoSlot {
     1: required Rect rect;
     2: required string videoId;
     3: required string posterUrl;
-    4: required i32 duration;
+    4: optional i32 duration;
 }
 
 struct MetricPaint {

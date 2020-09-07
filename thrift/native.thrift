@@ -82,7 +82,7 @@ service Notifications {
 service User {
     bool isPremium(),
     bool hasSeenArticle(1:string articleId),
-    list<bool> hasSeenArticles(1:list<string> articleIds)
+    list<string> filterSeenArticles(1:list<string> articleIds)
 }
 
 service Gallery {

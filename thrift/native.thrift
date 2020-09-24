@@ -58,6 +58,13 @@ union Metric {
     3: MetricFont font;
 }
 
+struct UserData {
+    1: required string userId;
+    2: required string displayName;
+    3: optional string avatar;
+    4: optional list<string> badge;
+}
+
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -81,7 +88,8 @@ service Notifications {
 
 service User {
     bool isPremium(),
-    list<string> filterSeenArticles(1:list<string> articleIds)
+    list<string> filterSeenArticles(1:list<string> articleIds),
+    UserData userData()
 }
 
 service Gallery {
@@ -95,4 +103,8 @@ service Videos {
 
 service Metrics {
     void sendMetrics(1:list<Metric> metrics)
+}
+
+service Discussion {
+    map<string, string> authenticationHeaders()
 }

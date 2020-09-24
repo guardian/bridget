@@ -36,7 +36,7 @@ if [ "$PLATFORM" == "ios" ]; then
         git add Sources/Bridget/*.swift
         git commit -m "Update Swift models $CURRENT_VERSION"
         git tag $CURRENT_VERSION
-        git push origin master
+        git push origin main
         git push --tags
     fi
 elif [ "$PLATFORM" == "android" ]; then

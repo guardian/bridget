@@ -82,7 +82,8 @@ service Notifications {
 service User {
     bool isPremium(),
     list<string> filterSeenArticles(1:list<string> articleIds),
-    bool doesCcpaApply()
+    bool doesCcpaApply(),
+    bool testFunction()
 }
 
 service Gallery {

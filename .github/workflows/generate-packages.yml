@@ -15,7 +15,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         RELEASE_BRANCHES: main
-        DRY_RUN: true
 
   generate-typescript-package:
     needs: bump-tag

@@ -83,7 +83,7 @@ service User {
     bool isPremium(),
     list<string> filterSeenArticles(1:list<string> articleIds),
     bool doesCcpaApply(),
-    void testFunction()
+    bool testFunction()
 }
 
 service Gallery {

@@ -107,5 +107,6 @@ service Metrics {
 }
 
 service Discussion {
-    map<string, string> authenticationHeaders()
+    string getClientName()
+    string getIdentityToken()
 }

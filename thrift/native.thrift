@@ -58,13 +58,6 @@ union Metric {
     3: MetricFont font;
 }
 
-struct UserData {
-    1: required string userId;
-    2: required string displayName;
-    3: optional string avatar;
-    4: optional list<string> badge;
-}
-
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -89,7 +82,7 @@ service Notifications {
 service User {
     bool isPremium(),
     list<string> filterSeenArticles(1:list<string> articleIds),
-    UserData userData(),
+    string discussionId(),
     bool doesCcpaApply()
 }
 
@@ -107,6 +100,7 @@ service Metrics {
 }
 
 service Discussion {
-    string getClientName()
-    string getIdentityToken()
+    string getClientName(),
+    string getIdentityToken(),
+    bool isDiscussionEnabled()
 }

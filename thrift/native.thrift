@@ -65,13 +65,6 @@ struct CommentResponse {
     4: optional string errorCode;
 }
 
-struct ReportAbuse {
-    1: required i32 commentId;
-    2: required i32 categoryId;
-    3: optional string reason;
-    4: optional string email;
-}
-
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -117,7 +110,6 @@ service Discussion {
     string preview(1:string body),
     CommentResponse comment(1:string shortUrl, 2:string body),
     CommentResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
-    CommentResponse reportAbuse(1:ReportAbuse reportAbuse),
     boolean recommend(1:commentId i32),
     bool isDiscussionEnabled()
 }

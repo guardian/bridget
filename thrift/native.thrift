@@ -107,9 +107,9 @@ service Metrics {
 }
 
 service Discussion {
+    string preview(1:string body),
     bool isDiscussionEnabled(),
     bool recommend(1:i32 commentId),
-    string preview(1:string body),
     CommentResponse comment(1:string shortUrl, 2:string body),
     CommentResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId)
 }

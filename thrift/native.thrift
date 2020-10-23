@@ -110,6 +110,6 @@ service Discussion {
     string preview(1:string body),
     CommentResponse comment(1:string shortUrl, 2:string body),
     CommentResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
-    bool recommend(1:commentId i32),
+    bool recommend(1:i32 commentId),
     bool isDiscussionEnabled()
 }

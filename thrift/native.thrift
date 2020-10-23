@@ -58,6 +58,13 @@ union Metric {
     3: MetricFont font;
 }
 
+struct CommentResponse {
+    1: required string status;
+    2: required i32 statusCode;
+    3: required string message;
+    4: optional string errorCode;
+}
+
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -82,6 +89,7 @@ service Notifications {
 service User {
     bool isPremium(),
     list<string> filterSeenArticles(1:list<string> articleIds),
+    string discussionId(),
     bool doesCcpaApply()
 }
 
@@ -96,4 +104,12 @@ service Videos {
 
 service Metrics {
     void sendMetrics(1:list<Metric> metrics)
+}
+
+service Discussion {
+    string preview(1:string body),
+    CommentResponse comment(1:string shortUrl, 2:string body),
+    CommentResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
+    bool recommend(1:commentId i32),
+    bool isDiscussionEnabled()
 }

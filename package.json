@@ -1,5 +1,5 @@
 {
-  "name": "mobile-apps-thrift",
+  "name": "bridget",
   "version": "1.0.0",
   "description": "Thrift files defining the API between native layers (iOS, Android) and [Webview](https://github.com/guardian/apps-rendering).",
   "main": "index.js",
@@ -13,9 +13,9 @@
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/guardian/mobile-apps-thrift/issues"
+    "url": "https://github.com/guardian/bridget/issues"
   },
-  "homepage": "https://github.com/guardian/mobile-apps-thrift#readme",
+  "homepage": "https://github.com/guardian/bridget#readme",
   "devDependencies": {
     "@creditkarma/thrift-server-core": "^0.15.3",
     "@creditkarma/thrift-typescript": "^3.7.6",

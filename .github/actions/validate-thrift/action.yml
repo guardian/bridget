@@ -3,5 +3,3 @@ description: "Determines valid thrift syntax before generating packages"
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - ${{ inputs.access_token }}

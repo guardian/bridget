@@ -14,8 +14,8 @@ cat bridget/native/native.thrift
 # Validate Thrift
 if thrift --gen swift:async_servers -r -out ./ bridget/thrift/native.thrift; then
     printf 'Validated Thrift ✅ proceeding to generate packages'
-    exit 1
+    exit 0
 else
     printf 'Invalid Thrift in native.thrift ❌'
-    exit 0
+    exit 1
 fi

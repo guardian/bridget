@@ -12,3 +12,5 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: ./.github/actions/validate-thrift
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}

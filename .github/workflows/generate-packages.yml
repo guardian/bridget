@@ -1,40 +1,47 @@
 on:
   push:
     branches:
-    - main
+      - main
     paths:
-    - 'thrift/**'
+      - "thrift/**"
 
 jobs:
-  bump-tag:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.25.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        RELEASE_BRANCHES: main
-
-  generate-typescript-package:
+  validate-thrift:
     needs: bump-tag
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@v1
-    - name: install
-      run: npm install
-    - name: generate and publish
-      run: ./gen-typescript.sh
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/checkout@master
+      - uses: ./.github/actions/validate-thrift
 
-  generate-swift-package:
-    needs: bump-tag
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: ./.github/actions/generate-native-package
-      with:
-        access_token: ${{ secrets.ACCESS_TOKEN }}
-        platform: 'ios'
+  # bump-tag:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - name: Bump version and push tag
+  #       uses: anothrNick/github-tag-action@1.25.0
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         RELEASE_BRANCHES: main
+
+  # generate-typescript-package:
+  #   needs: bump-tag
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: actions/setup-node@v1
+  #     - name: install
+  #       run: npm install
+  #     - name: generate and publish
+  #       run: ./gen-typescript.sh
+  #       env:
+  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # generate-swift-package:
+  #   needs: bump-tag
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: ./.github/actions/generate-native-package
+  #       with:
+  #         access_token: ${{ secrets.ACCESS_TOKEN }}
+  #         platform: "ios"

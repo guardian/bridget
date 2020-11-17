@@ -1,5 +1,11 @@
 name: "Validate thrift"
 description: "Determines valid thrift syntax before generating packages"
+inputs:
+  access_token:
+    description: "GitHub token"
+    required: true
 runs:
   using: "docker"
   image: "Dockerfile"
+  args:
+    - ${{ inputs.access_token }}

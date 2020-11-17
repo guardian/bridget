@@ -10,9 +10,9 @@ git config --global user.email '<>'
 
 # git clone https://github.com/guardian/bridget.git
 # cd bridget
-git fetch --all
-git checkout ${BRANCH}
-git pull origin ${BRANCH}
+# git fetch --all
+# git checkout ${BRANCH}
+# git pull origin ${BRANCH}
 
 cat thrift/native.thrift
 

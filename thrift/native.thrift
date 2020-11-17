@@ -111,5 +111,6 @@ service Discussion {
     bool isDiscussionEnabled(),
     bool recommend(1:i32 commentId),
     CommentResponse comment(1:string shortUrl, 2:string body),
-    CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId)
+    CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId),
+    InvalidReturnType test()
 }

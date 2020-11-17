@@ -13,6 +13,8 @@ git fetch
 git checkout origin/${BRANCH}
 git pull origin ${BRANCH}
 
+ls
+git branch
 cat bridget/thrift/native.thrift
 
 # Validate Thrift

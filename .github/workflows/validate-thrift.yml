@@ -10,11 +10,11 @@ jobs:
   validate-thrift:
     runs-on: ubuntu-latest
     steps:
-      - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
       - uses: actions/checkout@master
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
       - uses: ./.github/actions/validate-thrift
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}

@@ -10,9 +10,9 @@ jobs:
   validate-thrift:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-        with:
-          ref: ${{ github.head_ref }}
+      # - uses: actions/checkout@master
+      #   with:
+      #     ref: ${{ github.head_ref }}
       - uses: ./.github/actions/validate-thrift
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}

@@ -4,8 +4,12 @@ inputs:
   access_token:
     description: "GitHub token"
     required: true
+  branch:
+    description: "GitHub branch"
+    required: true
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
     - ${{ inputs.access_token }}
+    - ${{ inputs.branch }}

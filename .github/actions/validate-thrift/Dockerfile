@@ -41,6 +41,5 @@ RUN buildDeps=" \
 	&& rm -rf /var/tmp/*
 
 COPY validate.sh /validate.sh
-COPY credential-helper.sh /credential-helper.sh
 RUN ["chmod", "+x", "/validate.sh"]
 ENTRYPOINT ["/validate.sh"]

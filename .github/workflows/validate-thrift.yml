@@ -14,6 +14,3 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       - uses: ./.github/actions/validate-thrift
-        with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
-          branch: ${{ github.head_ref }}

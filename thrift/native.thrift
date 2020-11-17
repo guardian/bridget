@@ -110,9 +110,6 @@ service Discussion {
     string preview(1:string body),
     bool isDiscussionEnabled(),
     bool recommend(1:i32 commentId),
-    bool test(),
-    bool test(),
     CommentResponse comment(1:string shortUrl, 2:string body),
-    CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId),
-    AnotherInvalidReturnType test()
+    CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId)
 }

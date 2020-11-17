@@ -9,8 +9,8 @@ git config --global credential.helper "/bin/bash /credential-helper.sh"
 git config --global user.email '<>'
 
 git clone https://github.com/guardian/bridget.git
-git fetch
-git checkout origin/${BRANCH}
+git fetch --all
+git checkout ${BRANCH}
 git pull origin ${BRANCH}
 
 git remote -v

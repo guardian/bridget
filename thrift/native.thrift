@@ -1,4 +1,5 @@
 struct Rect {
+    5: optional y;
     1: required double x;
     2: required double y;
     3: required double height;
@@ -70,11 +71,13 @@ service Environment {
 }
 
 service Commercial {
+    void insertAdverts(),
     void insertAdverts(1:list<AdSlot> adSlots),
     void updateAdverts(1:list<AdSlot> adSlots)
 }
 
 service Acquisitions {
+    void invalidArguments(1:adSlots string),
     void launchFrictionScreen(),
     MaybeEpic getEpics(),
     void epicSeen()

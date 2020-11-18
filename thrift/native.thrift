@@ -107,7 +107,6 @@ service Metrics {
 }
 
 service Discussion {
-    invalidType preview(1:string body),
     string preview(1:string body),
     bool isDiscussionEnabled(),
     bool recommend(1:i32 commentId),

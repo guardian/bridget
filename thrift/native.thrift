@@ -65,6 +65,11 @@ struct CommentResponse {
     4: optional string errorCode;
 }
 
+enum FrictionScreenReason {
+    hideAds = 0,
+    epic = 1
+}
+
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -75,7 +80,7 @@ service Commercial {
 }
 
 service Acquisitions {
-    void launchFrictionScreen(),
+    void launchFrictionScreen(1: FrictionScreenReason reason),
     MaybeEpic getEpics(),
     void epicSeen()
 }

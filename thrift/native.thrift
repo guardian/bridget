@@ -65,7 +65,7 @@ struct CommentResponse {
     4: optional string errorCode;
 }
 
-enum FrictionScreenReason {
+enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
 }
@@ -80,7 +80,7 @@ service Commercial {
 }
 
 service Acquisitions {
-    void launchFrictionScreen(1: FrictionScreenReason reason),
+    void launchPurchaseScreen(1: PurchaseScreenReason reason),
     MaybeEpic getEpics(),
     void epicSeen()
 }

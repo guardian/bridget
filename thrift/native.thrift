@@ -118,3 +118,7 @@ service Discussion {
     CommentResponse comment(1:string shortUrl, 2:string body),
     CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId)
 }
+
+service Analytics {
+    void sendTargetingParams(1:map<string, string> targetingParams)
+}

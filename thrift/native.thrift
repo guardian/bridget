@@ -70,11 +70,6 @@ enum PurchaseScreenReason {
     epic = 1
 }
 
-enum NavigationLink {
-    privacySettings = 0,
-    privacyPolicy = 1
-}
-
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -129,5 +124,6 @@ service Analytics {
 }
 
 service Navigation {
-    void navigateTo(1: NavigationLink link)
+    void openPrivacySettings(),
+    void openPrivacyPolicy()
 }

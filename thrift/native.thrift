@@ -70,6 +70,11 @@ enum PurchaseScreenReason {
     epic = 1
 }
 
+enum NavigationLink {
+    privacySettings = 0,
+    privacyPolicy = 1
+}
+
 service Environment {
     string nativeThriftPackageVersion()
 }
@@ -121,4 +126,8 @@ service Discussion {
 
 service Analytics {
     void sendTargetingParams(1:map<string, string> targetingParams)
+}
+
+service Navigation {
+    void navigateTo(1: NavigationLink link)
 }

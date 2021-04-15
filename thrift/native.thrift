@@ -122,3 +122,8 @@ service Discussion {
 service Analytics {
     void sendTargetingParams(1:map<string, string> targetingParams)
 }
+
+service Navigation {
+    void openPrivacySettings(),
+    void openPrivacyPolicy()
+}

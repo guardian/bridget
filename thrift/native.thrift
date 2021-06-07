@@ -8,6 +8,7 @@ struct Rect {
 struct AdSlot {
     1: required Rect rect;
     2: optional map<string,string> targetingParams;
+    3: required bool isSquare;
 }
 
 struct Topic {

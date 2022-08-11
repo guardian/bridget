@@ -12,6 +12,8 @@ The Swift and Java packages are generated and published using this [GitHub actio
 - The TypeScript package can be installed from [NPM](https://www.npmjs.com/package/mobile-apps-thrift-typescript)
 - Swift package can be installed with Swift Package Manager from [GitHub](https://github.com/guardian/mobile-apps-thrift-swift)
 
+For Android, Java interfaces for Bridget services are generated at build time [in the Bridget module](https://github.com/guardian/android-news-app/blob/ffe36dbeb4a6c75709dba526a9b0e707a8f982a5/bridget/build.gradle.kts#L24-L31).
+
 
 ## Adding a new function
 1. Define the function in `native.thrift` if it needs to be implemented in Swift & Kotlin

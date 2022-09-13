@@ -66,6 +66,13 @@ struct CommentResponse {
     4: optional string errorCode;
 }
 
+struct NewsletterSignUpResponse {
+    1: required string status;
+    2: required i32 statusCode;
+    3: required string message;
+    4: optional string errorCode;
+}
+
 enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
@@ -127,4 +134,8 @@ service Analytics {
 service Navigation {
     void openPrivacySettings(),
     void openPrivacyPolicy()
+}
+
+service NewsletterSignUp {
+    NewsletterSignUpResponse request(1: string emailAddress, 2:string newsletterIdentityName)
 }

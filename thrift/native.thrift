@@ -138,8 +138,10 @@ service Navigation {
 
 /**
  * Service to manage requests from the weblayer related to newsletter subscriptions.
+ * added  version 1.12.0
+ * methods:
+ *  - requestSignUp: request to sign up to a newsletter using an email address entered by the user.
  */
 service Newsletters {
-    // Respond to a request to sign up to a newsletter using an email address entered by the user.
     NewsletterSignUpResponse requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }

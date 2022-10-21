@@ -7,7 +7,7 @@ The repo is also responsible for generating and publishing packages to be used b
 `native.thrift` are the functions to be implemented by iOS and Android. The webview will be able to call these functions with the specified arguments.
 
 ## Generated packages
-The Swift and TypeScript packages are generated and published using this [GitHub action](https://github.com/guardian/mobile-apps-thrift/blob/main/.github/actions/generate-native-package/action.yml)
+The Swift and TypeScript packages are generated and published using this [GitHub action](.github/workflows/generate-packages.yml).
 
 - The TypeScript package can be installed from [NPM](https://www.npmjs.com/package/mobile-apps-thrift-typescript)
 - Swift package can be installed with Swift Package Manager from [GitHub](https://github.com/guardian/mobile-apps-thrift-swift)

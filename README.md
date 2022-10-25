@@ -9,7 +9,7 @@ The repo is also responsible for generating and publishing packages to be used b
 ## Generated packages
 The Swift and TypeScript packages are generated and published using this [GitHub action](.github/workflows/generate-packages.yml).
 
-- The TypeScript package can be installed from [NPM](https://www.npmjs.com/package/mobile-apps-thrift-typescript)
+- The TypeScript package can be installed from [NPM](https://www.npmjs.com/package/@guardian/bridget)
 - Swift package can be installed with Swift Package Manager from [GitHub](https://github.com/guardian/mobile-apps-thrift-swift)
 
 For Android, Java interfaces for Bridget services are generated at build time [in the Bridget module](https://github.com/guardian/android-news-app/blob/ffe36dbeb4a6c75709dba526a9b0e707a8f982a5/bridget/build.gradle.kts#L24-L31).

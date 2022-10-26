@@ -29,7 +29,7 @@ RUN buildDeps=" \
 	&& rm thrift.tar.gz \
 	&& cd /usr/src/thrift \
 	&& ./bootstrap.sh \
-	&& ./configure --disable-libs \
+	&& ./configure --disable-libs --without-as3 --without-c_glib --without-cl --without-cpp --without-d --without-dart --without-delphi --without-erl --without-go --without-haxe --without-hs --without-java --without-javame --without-js --without-json --without-lua --without-netstd --without-nodejs --without-nodets --without-ocaml --without-perl --without-php --without-py --without-rb --without-rs --without-st --without-ts --without-xml \
 	&& make \
 	&& make install \
 	&& cd / \

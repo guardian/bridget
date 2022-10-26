@@ -25,10 +25,10 @@ For Android, Java interfaces for Bridget services are generated at build time [i
 
 ## Releasing Bridget
 
-Bridget is released by the [`generate-packages.yml`](.github/workflows/generate-packages.yml) GitHub Actio. The action requires the following environment variables:
+Bridget is released by the [`generate-packages.yml`](.github/workflows/generate-packages.yml) GitHub Action. The repository needs the following secrets available to the action:
 
 - `NPM_TOKEN`
-- a GitHub Personal Access Token (PAT). The PAT needs read/write permissions for the [`guardian/bridget-swift`](https://github.com/guardian/bridget-swift) repository.
+- `ACCESS_TOKEN`: a GitHub Personal Access Token (PAT). The PAT needs read/write permissions for the [`guardian/bridget-swift`](https://github.com/guardian/bridget-swift) repository. Please use a [Fine Grained PAT](https://github.blog/2022-10-18-introducing-fine-grained-personal-access-tokens-for-github/).
 
 ### Setting the version bump
 

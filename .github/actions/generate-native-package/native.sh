@@ -39,8 +39,6 @@ if [ "$PLATFORM" == "ios" ]; then
         git push origin main
         git push --tags
     fi
-elif [ "$PLATFORM" == "android" ]; then
-    ls gen-java
 else
-    echo "Unrecognised platform. Please specify \"ios\" or \"android\" as the second argument"
+    echo "Unrecognised platform. Please specify \"ios\" as the second argument"
 fi

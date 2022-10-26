@@ -1,2 +1,0 @@
-This file exists only to trigger a release.
-The GitHub Action which triggers releases only runs when there are changes in this directory.

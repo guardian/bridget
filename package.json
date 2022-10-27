@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/guardian/bridget#readme",
   "devDependencies": {
-    "@creditkarma/thrift-server-core": "^0.15.3",
+    "@creditkarma/thrift-server-core": "^1.0.4",
     "@creditkarma/thrift-typescript": "^3.7.6",
     "json": "^11.0.0",
     "typescript": "^3.8.3"

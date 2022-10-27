@@ -2,8 +2,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "thrift/**"
 
 jobs:
   bump-tag:

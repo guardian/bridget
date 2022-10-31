@@ -23,5 +23,31 @@ For Android, Java interfaces for Bridget services are generated at build time [i
 5. If you don't see the published packages, start by inspecting the GitHub action started on the branch that was merged into main
 6. Bump the version in your repo (iOS, Android or apps-rendering) and implement the function or make the function call. Make sure the function is always available in the current environment. This can be done by checking the thrift version number of the webView or native layer
 
+## Releasing Bridget
+
+Bridget is released by the [`generate-packages.yml`](.github/workflows/generate-packages.yml) GitHub Action. The repository needs the following secrets available to the action:
+
+- `NPM_TOKEN`
+- `ACCESS_TOKEN`: a GitHub Personal Access Token (PAT). The PAT needs read/write permissions for the [`guardian/bridget-swift`](https://github.com/guardian/bridget-swift) repository. Please use a [Fine Grained PAT](https://github.blog/2022-10-18-introducing-fine-grained-personal-access-tokens-for-github/).
+
+### Setting the version bump
+
+Versions are managed by [`github-tag-action`](https://github.com/anothrNick/github-tag-action). The default bump is a `minor` version. However, you can specify what version bump to perform using a known symbol at the end of your merge commit message.
+
+For example, to perform a patch bump, your merge commit message could look like:
+
+```
+Release new version of Bridget. #patch
+```
+
+You can use the following symbols:
+
+- `#patch`
+- `#minor`
+- `#major`
+- `#none`, which will not perform a version bump
+
+For more information, see the [`github-tag-action` docs](https://github.com/anothrNick/github-tag-action#bumping).
+
 ## About the name
 The name Bridget was chosen out of a list of a dozen suggestions, containing mostly bridge related puns.

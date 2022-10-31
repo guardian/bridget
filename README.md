@@ -32,7 +32,7 @@ Bridget is released by the [`generate-packages.yml`](.github/workflows/generate-
 
 ### Setting the version bump
 
-Versions are managed by [`github-tag-action`](https://github.com/anothrNick/github-tag-action). The default bump is a `minor` version. However, you can specify what version bump to perform using a token at the end of your merge commit message.
+Versions are managed by [`github-tag-action`](https://github.com/anothrNick/github-tag-action). The default bump is a `minor` version. However, you can specify what version bump to perform using a known symbol at the end of your merge commit message.
 
 For example, to perform a patch bump, your merge commit message could look like:
 
@@ -40,7 +40,7 @@ For example, to perform a patch bump, your merge commit message could look like:
 Release new version of Bridget. #patch
 ```
 
-You can use the following tokens:
+You can use the following symbols:
 
 - `#patch`
 - `#minor`

@@ -15,6 +15,5 @@ jobs:
     with:
       DEBUG: true
       ORG: guardian-mobile
-      SKIP_NODE: true
     secrets:
        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

@@ -2,8 +2,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "thrift/**"
 
 jobs:
   bump-tag:
@@ -11,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.25.0
+        uses: anothrNick/github-tag-action@1.52.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_BRANCHES: main
@@ -20,8 +18,11 @@ jobs:
     needs: bump-tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
+          node-version-file: '.nvmrc'
       - name: install
         run: npm install
       - name: generate and publish

@@ -67,10 +67,10 @@ struct CommentResponse {
 }
 
 struct NewsletterSignUpResponse {
-    1: required string status;
+    1: required bool success;
     2: required i32 statusCode;
-    3: required string message;
-    4: optional string errorCode;
+    3: optional string body;
+    4: optional string errorBody;
 }
 
 enum PurchaseScreenReason {

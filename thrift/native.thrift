@@ -67,7 +67,7 @@ struct CommentResponse {
 }
 
 struct NewsletterSignUpResponse {
-    1: required i32 statusCode;
+    1: required bool success;
     2: optional string jsonBody;
 }
 

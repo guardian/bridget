@@ -68,7 +68,6 @@ struct CommentResponse {
 
 struct NewsletterSignUpResponse {
     1: required bool success;
-    2: optional string jsonBody;
 }
 
 enum PurchaseScreenReason {

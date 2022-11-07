@@ -66,6 +66,10 @@ struct CommentResponse {
     4: optional string errorCode;
 }
 
+struct NewsletterSignUpResponse {
+    1: required bool success;
+}
+
 enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
@@ -127,4 +131,14 @@ service Analytics {
 service Navigation {
     void openPrivacySettings(),
     void openPrivacyPolicy()
+}
+
+/**
+ * Service to manage requests from the weblayer related to newsletter subscriptions.
+ * added  version 1.13.0
+ * methods:
+ *  - requestSignUp: request to sign up to a newsletter using an email address entered by the user.
+ */
+service Newsletters {
+    NewsletterSignUpResponse requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }

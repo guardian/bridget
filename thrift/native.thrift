@@ -66,10 +66,6 @@ struct CommentResponse {
     4: optional string errorCode;
 }
 
-struct NewsletterSignUpResponse {
-    1: required bool success;
-}
-
 enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
@@ -140,5 +136,5 @@ service Navigation {
  *  - requestSignUp: request to sign up to a newsletter using an email address entered by the user.
  */
 service Newsletters {
-    NewsletterSignUpResponse requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
+    void requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }

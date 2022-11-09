@@ -66,10 +66,6 @@ struct CommentResponse {
     4: optional string errorCode;
 }
 
-struct NewsletterSignUpResponse {
-    1: required bool success;
-}
-
 enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
@@ -135,10 +131,10 @@ service Navigation {
 
 /**
  * Service to manage requests from the weblayer related to newsletter subscriptions.
- * added  version 1.13.0
+ * added  version 2.0.0
  * methods:
- *  - requestSignUp: request to sign up to a newsletter using an email address entered by the user.
+ *  - requestSignUp: request to sign up to a newsletter using an email address entered by the user. Returns `true` if the request was successful, `false` if it failed for any reason. Exceptions thrown will be discarded.
  */
 service Newsletters {
-    NewsletterSignUpResponse requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
+    bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }

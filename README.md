@@ -30,6 +30,10 @@ Bridget is released by the [`generate-packages.yml`](.github/workflows/generate-
 - `NPM_TOKEN`
 - `ACCESS_TOKEN`: a GitHub Personal Access Token (PAT). The PAT needs read/write permissions for the [`guardian/bridget-swift`](https://github.com/guardian/bridget-swift) repository. Please use a [Fine Grained PAT](https://github.blog/2022-10-18-introducing-fine-grained-personal-access-tokens-for-github/).
 
+### GitHub Action `generate-swift-package` fails with "Authentication failed"
+
+This is likely caused by an expired `ACCESS_TOKEN` repository secret. To fix this, you should update the `ACCESS_TOKEN` secret with  a new Fine Grained PAT as described in [Releasing Bridget](#releasing-bridget). **Note:** updating a secret requires admin permissions on the repository.
+
 ### Setting the version bump
 
 Versions are managed by [`github-tag-action`](https://github.com/anothrNick/github-tag-action). The default bump is a `minor` version. However, you can specify what version bump to perform using a known symbol at the end of your merge commit message.

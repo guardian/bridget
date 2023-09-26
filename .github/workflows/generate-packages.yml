@@ -39,3 +39,13 @@ jobs:
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "ios"
+
+  generate-android-package:
+    needs: bump-tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}
+          platform: "android"

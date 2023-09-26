@@ -86,6 +86,12 @@ service Acquisitions {
     void epicSeen()
 }
 
+service Tag {
+    bool follow(1:Topic topic),
+    bool unfollow(1:Topic topic),
+    bool isFollowing(1:Topic topic),
+}
+
 service Notifications {
     bool follow(1:Topic topic),
     bool unfollow(1:Topic topic),

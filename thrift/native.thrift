@@ -73,6 +73,7 @@ enum PurchaseScreenReason {
 
 service Environment {
     string nativeThriftPackageVersion()
+    bool isMyGuardianEnabled()
 }
 
 service Commercial {

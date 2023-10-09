@@ -40,7 +40,32 @@ if [ "$PLATFORM" == "ios" ]; then
         git push --tags
     fi
 elif [ "$PLATFORM" == "android" ]; then
-    ls gen-java
+
+    # Check out the bridget-android repo and delete all existing source files
+    git clone https://github.com/guardian/bridget-android.git
+    rm -rf bridget-android/library/src/main
+    
+    # Create fresh directories
+    mkdir -p bridget-android/library/src/main/thrift
+    mkdir -p bridget-android/library/src/main/java
+
+
+    # Prefix package name in thrift file and copy it to the bridget-android repo
+    cat <(echo -e "namespace java com.theguardian.bridget.thrift\n") native.thrift > native_temp.thrift && mv native_temp.thrift native.thrift
+    cp bridget/thrift/native.thrift bridget-android/library/src/main/thrift
+    
+    # Generate thrift classes
+    thrift -gen java:generated_annotations=undated -out library/src/main/java/ library/src/main/thrift/native.thrift
+
+    # Commit changes and tag the current version
+    cd bridget-android
+    if [[ -n `git diff` ]]; then
+        git add bridget-android/library/src/main/*
+        git commit -m "Update Thrift generated classes $CURRENT_VERSION"
+        git tag $CURRENT_VERSION
+        git push origin main
+        git push --tags
+    fi
 else
     echo "Unrecognised platform. Please specify \"ios\" or \"android\" as the second argument"
 fi

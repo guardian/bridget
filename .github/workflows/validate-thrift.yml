@@ -8,6 +8,9 @@ on:
     paths:
       - "thrift/**"
 
+permissions:
+  contents: read
+
 jobs:
   validate-thrift:
     runs-on: ubuntu-latest

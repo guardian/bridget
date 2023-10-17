@@ -10,8 +10,7 @@
 # generate TypeScript Thrift files
 node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceDir thrift --outDir dist/bridget --strictUnions ../thrift/native.thrift
 
-cd dist 
-cd bridget
+cd dist/bridget
 
 # create package.json
 npm init -y

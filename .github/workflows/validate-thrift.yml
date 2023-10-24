@@ -5,8 +5,8 @@ on:
   pull_request:
     branches:
       - main
-    # paths:
-    #   - "thrift/**"
+    paths:
+      - "thrift/**"
 
 permissions:
   contents: read

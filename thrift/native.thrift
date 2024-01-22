@@ -99,11 +99,16 @@ service Notifications {
     bool isFollowing(1:Topic topic),
 }
 
+struct MaybeEmail {
+    1: optional string email;
+}
 service User {
     bool isPremium(),
     list<string> filterSeenArticles(1:list<string> articleIds),
     string discussionId(),
     bool doesCcpaApply()
+    bool isLoggedIn(),
+    MaybeEmail getUserEmail()
 }
 
 service Gallery {

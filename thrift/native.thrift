@@ -112,21 +112,6 @@ service Metrics {
     void sendMetrics(1:list<Metric> metrics)
 }
 
-// service Discussion {
-//     string preview(1:string body),
-//     bool isDiscussionEnabled(),
-//     bool recommend(1:i32 commentId),
-//     CommentResponse comment(1:string shortUrl, 2:string body),
-//     CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId)
-// }
-
-// struct CommentResponse {
-//     1: required string status;
-//     2: required i32 statusCode;
-//     3: required string message;
-//     4: optional string errorCode;
-// }
-
 struct DiscussionBadge {
     1: required string name;
 }
@@ -144,31 +129,41 @@ struct DiscussionUserProfile {
     10: required bool hasCommented;
 }
 
-enum CommentResponseFailure {
-    USERNAME_MISSING = 0
-	EMPTY_COMMENT_BODY = 1
-	COMMENT_TOO_LONG = 2
-	USER_BANNED = 3
-	IP_THROTTLED = 4
-	DISCUSSION_CLOSED = 5
-	PARENT_COMMENT_MODERATED = 6 
-	COMMENT_RATE_LIMIT_EXCEEDED = 7
-	INVALID_PROTOCOL = 8
-	AUTH_COOKIE_INVALID = 9
-	READ_ONLY_MODE = 10
-	API_CORS_BLOCKED = 11
-	API_ERROR = 12
-	EMAIL_NOT_VALIDATED = 13
+ struct DiscussionApiResponse {
+     1: required string status;
+     2: required i32 statusCode;
+     3: required string message;
+     4: optional string errorCode;
+ }
+
+ enum DiscussionNativeError {
+    UNKNOWN_ERROR = 0
+ }
+
+union DiscussionResponse {
+    1: DiscussionApiResponse response;
+    2: DiscussionNativeError error;
 }
 
-union CommentResponse {
-    1: string userId;
-    2: CommentResponseFailure errorCode;
+union GetUserProfileResponse {
+    1:DiscussionUserProfile profile;
+    2:DiscussionNativeError error;
+}
+
+struct ReportAbuseParameters {
+    1:string commentId;
+    2: string categoryId;
+    3:optional string reason;
+    4:optional string email;
 }
 
 service Discussion {
-    DiscussionUserProfile getUserProfile(),
-
+    GetUserProfileResponse getUserProfile(),
+    DiscussionResponse comment(1:string shortUrl, 2:string body),
+    DiscussionResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
+    DiscussionResponse recommend(1:string commentId),
+    DiscussionResponse addUsername(1:string username),
+    DiscussionResponse reportAbuse(1:ReportAbuseParameters parameters)
 }
 
 service Analytics {

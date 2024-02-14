@@ -59,13 +59,6 @@ union Metric {
     3: MetricFont font;
 }
 
-struct CommentResponse {
-    1: required string status;
-    2: required i32 statusCode;
-    3: required string message;
-    4: optional string errorCode;
-}
-
 enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
@@ -119,12 +112,63 @@ service Metrics {
     void sendMetrics(1:list<Metric> metrics)
 }
 
+// service Discussion {
+//     string preview(1:string body),
+//     bool isDiscussionEnabled(),
+//     bool recommend(1:i32 commentId),
+//     CommentResponse comment(1:string shortUrl, 2:string body),
+//     CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId)
+// }
+
+// struct CommentResponse {
+//     1: required string status;
+//     2: required i32 statusCode;
+//     3: required string message;
+//     4: optional string errorCode;
+// }
+
+struct DiscussionBadge {
+    1: required string name;
+}
+
+struct DiscussionUserProfile {
+    1: required string userId;
+    2: required string displayName;
+    3: required string webUrl;
+    4: required string apiUrl;
+    5: required string avatar;
+    6: required string secureAvatarUrl;
+    7: required list<DiscussionBadge> badge;
+    8: required bool canPostComment;
+    9: required bool isPremoderated;
+    10: required bool hasCommented;
+}
+
+enum CommentResponseFailure {
+    USERNAME_MISSING = 0
+	EMPTY_COMMENT_BODY = 1
+	COMMENT_TOO_LONG = 2
+	USER_BANNED = 3
+	IP_THROTTLED = 4
+	DISCUSSION_CLOSED = 5
+	PARENT_COMMENT_MODERATED = 6 
+	COMMENT_RATE_LIMIT_EXCEEDED = 7
+	INVALID_PROTOCOL = 8
+	AUTH_COOKIE_INVALID = 9
+	READ_ONLY_MODE = 10
+	API_CORS_BLOCKED = 11
+	API_ERROR = 12
+	EMAIL_NOT_VALIDATED = 13
+}
+
+union CommentResponse {
+    1: string userId;
+    2: CommentResponseFailure errorCode;
+}
+
 service Discussion {
-    string preview(1:string body),
-    bool isDiscussionEnabled(),
-    bool recommend(1:i32 commentId),
-    CommentResponse comment(1:string shortUrl, 2:string body),
-    CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId)
+    DiscussionUserProfile getUserProfile(),
+
 }
 
 service Analytics {

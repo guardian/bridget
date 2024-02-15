@@ -33,12 +33,12 @@ jobs:
           platform: "ios"
           release_type: "prerelease"
 
-  # generate-android-package:
-  #   needs: bump-tag
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: ./.github/actions/generate-native-package
-  #       with:
-  #         access_token: ${{ secrets.ACCESS_TOKEN }}
-  #         platform: "android"
+  generate-android-package:
+    needs: bump-tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}
+          platform: "android"

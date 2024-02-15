@@ -1,3 +1,12 @@
+RELEASE_TYPE=$1
+
+if [ -z "$RELEASE_TYPE" ] || ! [[ "$RELEASE_TYPE" =~ ^(pre)?release$ ]];
+then
+    echo "Please specify a release type: prerelease or release";
+    echo "./gen-typescript prerelease";
+    exit 1
+fi
+
 # generate TypeScript Thrift files
 node_modules/.bin/thrift-typescript --target thrift-server --rootDir . --sourceDir thrift --outDir bridget --strictUnions ../thrift/native.thrift
 
@@ -17,9 +26,16 @@ echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 ls | grep "^[A-Za-z]*.ts" | xargs rm
 
 # use repo tag for version
-git fetch --all
 CURRENT_FULL_VERSION="$(git describe --tags --abbrev=0)"
 
 # publish to npm
 npm version ${CURRENT_FULL_VERSION}
-npm publish --access public
+
+if [ "$RELEASE_TYPE" = "prerelease" ];
+then
+    echo "publishing prerelease with version $CURRENT_FULL_VERSION"
+    npm publish --tag snapshot
+else
+    echo "publishing full release with version $CURRENT_FULL_VERSION"
+    npm publish --access public
+fi

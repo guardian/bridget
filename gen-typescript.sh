@@ -3,7 +3,7 @@ RELEASE_TYPE=$1
 if [ -z "$RELEASE_TYPE" ] || ! [[ "$RELEASE_TYPE" =~ ^(pre)?release$ ]];
 then
     echo "Please specify a release type: prerelease or release";
-    echo "./gen-typescript prerelease";
+    echo "e.g gen-typescript.sh prerelease";
     exit 1
 fi
 

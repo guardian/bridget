@@ -6,19 +6,8 @@ permissions:
   contents: write
 
 jobs:
-  # bump-tag:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Bump version and push tag
-  #       uses: anothrNick/github-tag-action@1.52.0
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         RELEASE_BRANCHES: main
-
   generate-typescript-package:
     if: "github.event.release.prerelease"
-    # needs: bump-tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -33,15 +22,16 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  # generate-swift-package:
-  #   # needs: bump-tag
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - uses: ./.github/actions/generate-native-package
-  #       with:
-  #         access_token: ${{ secrets.ACCESS_TOKEN }}
-  #         platform: "ios"
+  generate-swift-package:
+    runs-on: ubuntu-latest
+    if: "github.event.release.prerelease"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}
+          platform: "ios"
+          release_type: "prerelease"
 
   # generate-android-package:
   #   needs: bump-tag

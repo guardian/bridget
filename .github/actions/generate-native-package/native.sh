@@ -39,7 +39,9 @@ if [ "$PLATFORM" == "ios" ]; then
     git clone https://github.com/guardian/bridget-swift.git
     if [ "$RELEASE_TYPE" = "prerelease" ];
     then
+        cd bridget-swift
         git checkout -b $CURRENT_VERSION
+        cd ..
     fi
     rm -rf bridget-swift/Sources/Bridget
     mkdir -p bridget-swift/Sources/Bridget
@@ -67,6 +69,14 @@ elif [ "$PLATFORM" == "android" ]; then
 
     # Check out the bridget-android repo and delete all existing source files
     git clone https://github.com/guardian/bridget-android.git
+
+    if [ "$RELEASE_TYPE" = "prerelease" ];
+    then
+        cd bridget-android
+        git checkout -b $CURRENT_VERSION
+        cd ..
+    fi
+
     rm -rf bridget-android/library/src/main
     
     # Create fresh directories

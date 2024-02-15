@@ -10,7 +10,7 @@ jobs:
   bump-tag:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@1.52.0
         env:
@@ -21,8 +21,8 @@ jobs:
     needs: bump-tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           cache: 'npm'
           node-version-file: '.nvmrc'
@@ -37,7 +37,7 @@ jobs:
     needs: bump-tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/generate-native-package
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}
@@ -47,7 +47,7 @@ jobs:
     needs: bump-tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/generate-native-package
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}

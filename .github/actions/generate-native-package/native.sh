@@ -89,7 +89,7 @@ elif [ "$PLATFORM" == "android" ]; then
     cp bridget/thrift/native.thrift bridget-android/library/src/main/thrift
     
     # Generate thrift classes
-    thrift -gen java:generated_annotations=undated -out library/src/main/java/ library/src/main/thrift/native.thrift
+    thrift -gen java:generated_annotations=undated -out bridget-android/library/src/main/java/ bridget-android/library/src/main/thrift/native.thrift
 
     # Commit changes and tag the current version
     cd bridget-android

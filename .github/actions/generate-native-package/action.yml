@@ -11,3 +11,4 @@ runs:
   args:
     - ${{ inputs.access_token }}
     - ${{ inputs.platform }}
+    - ${{ inputs.release_type }}

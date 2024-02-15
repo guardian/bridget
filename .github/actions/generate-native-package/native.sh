@@ -51,13 +51,13 @@ if [ "$PLATFORM" == "ios" ]; then
     if [[ -n `git diff` ]]; then
         git add Sources/Bridget/*.swift
         git commit -m "Update Swift models $CURRENT_VERSION"
-        git tag $CURRENT_VERSION
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
             git push -u origin $CURRENT_VERSION
         else
             git push origin main
         fi
+        git tag $CURRENT_VERSION
         git push --tags
     fi
 elif [ "$PLATFORM" == "android" ]; then
@@ -91,13 +91,13 @@ elif [ "$PLATFORM" == "android" ]; then
     if [[ -n `git diff` ]]; then
         git add library/src/main/*
         git commit -m "Update Thrift generated classes $CURRENT_VERSION"
-        git tag $CURRENT_VERSION
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
             git push -u origin $CURRENT_VERSION
         else
             git push origin main
         fi
+        git tag $CURRENT_VERSION
         git push --tags
     fi
 else

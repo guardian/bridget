@@ -41,3 +41,4 @@ jobs:
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "android"
+          release_type: "prerelease"

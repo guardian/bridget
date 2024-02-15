@@ -94,7 +94,7 @@ elif [ "$PLATFORM" == "android" ]; then
     # Commit changes and tag the current version
     cd bridget-android
     if [[ -n `git diff` ]]; then
-        git add bridget-android/library/src/main/*
+        git add library/src/main/*
         git commit -m "Update Thrift generated classes $CURRENT_VERSION"
         git tag $CURRENT_VERSION
         if [ "$RELEASE_TYPE" = "prerelease" ];

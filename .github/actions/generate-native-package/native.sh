@@ -85,7 +85,7 @@ elif [ "$PLATFORM" == "android" ]; then
 
 
     # Prefix package name in thrift file and copy it to the bridget-android repo
-    cat <(echo -e "namespace java com.theguardian.bridget.thrift\n") native.thrift > native_temp.thrift && mv native_temp.thrift native.thrift
+    cat <(echo -e "namespace java com.theguardian.bridget.thrift\n") bridget/thrift/native.thrift > bridget/thrift/native_temp.thrift && mv bridget/thrift/native_temp.thrift bridget/thrift/native.thrift
     cp bridget/thrift/native.thrift bridget-android/library/src/main/thrift
     
     # Generate thrift classes

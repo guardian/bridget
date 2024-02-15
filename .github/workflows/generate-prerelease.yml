@@ -34,7 +34,6 @@ jobs:
           release_type: "prerelease"
 
   generate-android-package:
-    needs: bump-tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

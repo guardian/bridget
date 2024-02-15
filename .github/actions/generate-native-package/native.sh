@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Read arguments
-# export ACCESS_TOKEN=$1
-# TODO: remove fake access token
-export ACCESS_TOKEN=fake
+export ACCESS_TOKEN=$1
 export PLATFORM=$2
 export RELEASE_TYPE=$3
 
@@ -56,14 +54,11 @@ if [ "$PLATFORM" == "ios" ]; then
         git tag $CURRENT_VERSION
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
-            echo "git push -u origin $CURRENT_VERSION"
-            # git push -u origin $CURRENT_VERSION
+            git push -u origin $CURRENT_VERSION
         else
-            echo "git push origin main"
-            # git push origin main
+            git push origin main
         fi
-        # git push --tags
-        echo "git push --tags"
+        git push --tags
     fi
 elif [ "$PLATFORM" == "android" ]; then
 
@@ -99,14 +94,11 @@ elif [ "$PLATFORM" == "android" ]; then
         git tag $CURRENT_VERSION
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
-            echo "git push -u origin $CURRENT_VERSION"
-            # git push -u origin $CURRENT_VERSION
+            git push -u origin $CURRENT_VERSION
         else
-            echo "git push origin main"
-            # git push origin main
+            git push origin main
         fi
-        # git push --tags
-        echo "git push --tags"
+        git push --tags
     fi
 else
     echo "Unrecognised platform. Please specify \"ios\" or \"android\" as the second argument"

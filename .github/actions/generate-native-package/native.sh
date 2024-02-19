@@ -23,6 +23,8 @@ git clone https://github.com/guardian/bridget.git
 cd bridget
 git checkout $GITHUB_SHA
 CURRENT_VERSION="$(git describe --tags --abbrev=0)"
+# Add a -branch suffix so the prerelease tag and branch do not have the same name
+PRERELEASE_BRANCH_NAME="$CURRENT_VERSION-branch"
 cd ../
 
 # Add version const to thrift file
@@ -35,10 +37,12 @@ if [ "$PLATFORM" == "ios" ]; then
 
     # Check out the Swift repo and delete all existing source files
     git clone https://github.com/guardian/bridget-swift.git
+
+
     if [ "$RELEASE_TYPE" = "prerelease" ];
     then
         cd bridget-swift
-        git checkout -b $CURRENT_VERSION
+        git checkout -b $PRERELEASE_BRANCH_NAME
         cd ..
     fi
     rm -rf bridget-swift/Sources/Bridget
@@ -53,7 +57,7 @@ if [ "$PLATFORM" == "ios" ]; then
         git commit -m "Update Swift models $CURRENT_VERSION"
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
-            git push -u origin $CURRENT_VERSION
+            git push -u origin $PRERELEASE_BRANCH_NAME
         else
             git push origin main
         fi
@@ -68,7 +72,7 @@ elif [ "$PLATFORM" == "android" ]; then
     if [ "$RELEASE_TYPE" = "prerelease" ];
     then
         cd bridget-android
-        git checkout -b $CURRENT_VERSION
+        git checkout -b $PRERELEASE_BRANCH_NAME
         cd ..
     fi
 
@@ -93,7 +97,7 @@ elif [ "$PLATFORM" == "android" ]; then
         git commit -m "Update Thrift generated classes $CURRENT_VERSION"
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
-            git push -u origin $CURRENT_VERSION
+            git push -u origin $PRERELEASE_BRANCH_NAME
         else
             git push origin main
         fi

@@ -23,5 +23,7 @@
     "typescript": "3.8.3"
   },
   "keywords": [],
-  "dependencies": {}
+  "dependencies": {
+    "@changesets/cli": "^2.27.1"
+  }
 }

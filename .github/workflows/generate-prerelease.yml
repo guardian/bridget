@@ -10,8 +10,8 @@ jobs:
     if: "github.event.release.prerelease"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           cache: "npm"
           node-version-file: ".nvmrc"
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "github.event.release.prerelease"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/generate-native-package
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}
@@ -36,7 +36,7 @@ jobs:
   generate-android-package:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/generate-native-package
         with:
           access_token: ${{ secrets.ACCESS_TOKEN }}

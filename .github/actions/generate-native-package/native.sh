@@ -21,7 +21,7 @@ git config --global user.email '<>'
 git clone https://github.com/guardian/bridget.git
 
 cd bridget
-git checkout $GITHUB_SHA
+git checkout $GITHUB_REF
 CURRENT_VERSION="$(git describe --tags --abbrev=0)"
 # Add a -branch suffix so the prerelease tag and branch do not have the same name
 PRERELEASE_BRANCH_NAME="$CURRENT_VERSION-branch"

@@ -33,9 +33,9 @@ npm version ${CURRENT_FULL_VERSION}
 
 if [ "$RELEASE_TYPE" = "prerelease" ];
 then
-    echo "publishing prerelease with version $CURRENT_FULL_VERSION"
+    echo "Publishing prerelease with version $CURRENT_FULL_VERSION"
     npm publish --tag snapshot
 else
-    echo "publishing full release with version $CURRENT_FULL_VERSION"
+    echo "Publishing full release with version $CURRENT_FULL_VERSION"
     npm publish --access public
 fi

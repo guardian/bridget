@@ -29,7 +29,7 @@ cd ../
 echo "" >> bridget/thrift/native.thrift
 echo "const string BRIDGET_VERSION = \"$CURRENT_VERSION\"" >>  bridget/thrift/native.thrift
 
-echo "Releasing $RELEASE_TYPE to platform $PLATFORM with version $CURRENT_VERSION"
+echo "Publishing $RELEASE_TYPE to platform $PLATFORM with version $CURRENT_VERSION"
 # Platform tasks
 if [ "$PLATFORM" == "ios" ]; then
 

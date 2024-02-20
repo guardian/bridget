@@ -18,7 +18,7 @@ jobs:
         run: |
           VERSION=$(git describe --tags --abbrev=0)
           echo $VERSION
-          echo "version=$VERSION\n" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   generate-typescript-package:
     needs: get_version

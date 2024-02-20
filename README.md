@@ -30,6 +30,16 @@ Bridget is released by the [`generate-packages.yml`](.github/workflows/generate-
 - `NPM_TOKEN`
 - `ACCESS_TOKEN`: a GitHub Personal Access Token (PAT). The PAT needs read/write permissions for the [`guardian/bridget-swift`](https://github.com/guardian/bridget-swift) repository. Please use a [Fine Grained PAT](https://github.blog/2022-10-18-introducing-fine-grained-personal-access-tokens-for-github/).
 
+## Testing a prerelease
+
+You can use prereleases to test a new version of the models across web, Android and iOS without making a full release.
+
+To do this, create a new prerelease in the GitHub releases UI (or [click here](https://github.com/guardian/bridget/releases/new?prerelease=true)). The tag is used as the version. For example, once the prerelease action has finished running for a prerelease created with tag `v0.0.0-2024-02-16`:
+
+* install from `npm`: `npm install @guardian/bridget@v0.0.0-2024-02-16`
+* find the `swift` package: `https://github.com/guardian/bridget-swift/tree/v0.0.0-2024-02-16`
+* find the `android` package: `https://github.com/guardian/bridget-android/tree/v0.0.0-2024-02-16`
+
 ### GitHub Action `generate-swift-package` fails with "Authentication failed"
 
 This is likely caused by an expired `ACCESS_TOKEN` repository secret. To fix this, you should update the `ACCESS_TOKEN` secret with  a new Fine Grained PAT as described in [Releasing Bridget](#releasing-bridget). **Note:** updating a secret requires admin permissions on the repository.

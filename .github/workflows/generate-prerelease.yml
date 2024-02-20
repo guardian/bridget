@@ -6,7 +6,16 @@ permissions:
   contents: write
 
 jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version from latest tag
+        run: echo "version=$(git describe --tags --abbrev=0)\n" >> $GITHUB_OUTPUT
+
   generate-typescript-package:
+    needs: version
     if: "github.event.release.prerelease"
     runs-on: ubuntu-latest
     steps:
@@ -18,11 +27,13 @@ jobs:
       - name: install
         run: npm install
       - name: generate and publish
-        run: ./gen-typescript.sh prerelease
+        run: ./gen-typescript.sh prerelease ${VERSION}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION: ${{ needs.version.outputs.version }}
 
   generate-swift-package:
+    needs: version
     runs-on: ubuntu-latest
     if: "github.event.release.prerelease"
     steps:
@@ -32,8 +43,10 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "ios"
           release_type: "prerelease"
+          version: ${{ needs.version.outputs.version }}
 
   generate-android-package:
+    needs: version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,3 +55,4 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "android"
           release_type: "prerelease"
+          version: ${{ needs.version.outputs.version }}

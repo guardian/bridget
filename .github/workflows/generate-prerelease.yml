@@ -41,27 +41,27 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ needs.get_version.outputs.version }}
 
-  # generate-swift-package:
-  #   needs: get_version
-  #   runs-on: ubuntu-latest
-  #   if: "github.event.release.prerelease"
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./.github/actions/generate-native-package
-  #       with:
-  #         access_token: ${{ secrets.ACCESS_TOKEN }}
-  #         platform: "ios"
-  #         release_type: "prerelease"
-  #         version: ${{ needs.get_version.outputs.version }}
+  generate-swift-package:
+    needs: get_version
+    runs-on: ubuntu-latest
+    if: "github.event.release.prerelease"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}
+          platform: "ios"
+          release_type: "prerelease"
+          version: ${{ needs.get_version.outputs.version }}
 
-  # generate-android-package:
-  #   needs: get_version
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./.github/actions/generate-native-package
-  #       with:
-  #         access_token: ${{ secrets.ACCESS_TOKEN }}
-  #         platform: "android"
-  #         release_type: "prerelease"
-  #         version: ${{ needs.get_version.outputs.version }}
+  generate-android-package:
+    needs: get_version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}
+          platform: "android"
+          release_type: "prerelease"
+          version: ${{ needs.get_version.outputs.version }}

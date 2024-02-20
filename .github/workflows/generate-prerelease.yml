@@ -21,7 +21,7 @@ jobs:
           echo "version=$VERSION\n" >> $GITHUB_OUTPUT
 
   generate-typescript-package:
-    needs: version
+    needs: get_version
     if: "github.event.release.prerelease"
     runs-on: ubuntu-latest
     steps:
@@ -42,7 +42,7 @@ jobs:
           VERSION: ${{ needs.get_version.outputs.version }}
 
   # generate-swift-package:
-  #   needs: version
+  #   needs: get_version
   #   runs-on: ubuntu-latest
   #   if: "github.event.release.prerelease"
   #   steps:
@@ -52,10 +52,10 @@ jobs:
   #         access_token: ${{ secrets.ACCESS_TOKEN }}
   #         platform: "ios"
   #         release_type: "prerelease"
-  #         version: ${{ needs.version.outputs.version }}
+  #         version: ${{ needs.get_version.outputs.version }}
 
   # generate-android-package:
-  #   needs: version
+  #   needs: get_version
   #   runs-on: ubuntu-latest
   #   steps:
   #     - uses: actions/checkout@v4
@@ -64,4 +64,4 @@ jobs:
   #         access_token: ${{ secrets.ACCESS_TOKEN }}
   #         platform: "android"
   #         release_type: "prerelease"
-  #         version: ${{ needs.version.outputs.version }}
+  #         version: ${{ needs.get_version.outputs.version }}

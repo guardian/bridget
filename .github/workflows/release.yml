@@ -26,6 +26,7 @@ jobs:
 
       - name: Check if package version has changed
         id: version_check
+        # Check if the version has changed between this commit's package.json and the previous commit's package.json
         run: |
           PREV_VERSION=$(git checkout -q HEAD^ && npm pkg get version && git switch -q -)
           CURR_VERSION=$(npm pkg get version)
@@ -63,3 +64,11 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "ios"
           release_type: "release"
+
+      - name: Create release in GitHub
+        uses: changesets/action@v1
+        with:
+          # We've already published above, but changesets needs this command to exit successfully to create the release in GitHub
+          publish: exit 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,8 +2,8 @@ name: Create release PR or Release Packages
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    # - main
 
 jobs:
   manage_release:
@@ -14,6 +14,9 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Get the latest 2 commits so we can compare the versions in package.json
+          fetch-depth: 2
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -21,32 +24,42 @@ jobs:
           cache: "npm"
           node-version-file: ".nvmrc"
 
+      - name: Check if package version has changed
+        id: version_check
+        run: |
+          PREV_VERSION=$(git checkout -q HEAD^ && npm pkg get version && git switch -q -)
+          CURR_VERSION=$(npm pkg get version)
+          echo "versionChanged=$(if [ "$PREV_VERSION" = "$CURR_VERSION" ]; then echo "false"; else echo "true"; fi)\n" >> $GITHUB_OUTPUT
+          echo "$CURR_VERSION, $PREV_VERSION"
+
       - run: npm install
 
-      - name: Create Release Pull Request
-        uses: changesets/action@v1
-        id: changesets
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Create Release Pull Request
+      #   uses: changesets/action@v1
+      #   id: changesets
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # The steps below here only run when there's something to publish
 
-      - name: Publish NPM
-        if: steps.changesets.outputs.hasChangesets == 'false'
-        run: ./gen-typescript.sh
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Publish NPM
+      #   if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.versionChanged == 'true'
+      #   run: ./gen-typescript.sh release
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish Android
-        if: steps.changesets.outputs.hasChangesets == 'false'
-        uses: ./.github/actions/generate-native-package
-        with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
-          platform: "android"
+      # - name: Publish Android
+      #   if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.versionChanged == 'true'
+      #   uses: ./.github/actions/generate-native-package
+      #   with:
+      #     access_token: ${{ secrets.ACCESS_TOKEN }}
+      #     platform: "android"
+      #     release_type: "release"
 
-      - name: Publish iOS
-        if: steps.changesets.outputs.hasChangesets == 'false'
-        uses: ./.github/actions/generate-native-package
-        with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
-          platform: "ios"
+      # - name: Publish iOS
+      #   if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.versionChanged == 'true'
+      #   uses: ./.github/actions/generate-native-package
+      #   with:
+      #     access_token: ${{ secrets.ACCESS_TOKEN }}
+      #     platform: "ios"
+      #     release_type: "release"

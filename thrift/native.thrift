@@ -147,3 +147,7 @@ service Navigation {
 service Newsletters {
     bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }
+
+service GeorgeService {
+    bool sayHello()
+}

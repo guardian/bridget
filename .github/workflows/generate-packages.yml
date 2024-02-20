@@ -47,6 +47,7 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "ios"
           release_type: "release"
+          version: ${{ needs.bump-tag.outputs.new_tag }}
 
   generate-android-package:
     needs: bump-tag
@@ -58,3 +59,4 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "android"
           release_type: "release"
+          version: ${{ needs.bump-tag.outputs.new_tag }}

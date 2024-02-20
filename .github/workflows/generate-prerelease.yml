@@ -6,12 +6,15 @@ permissions:
   contents: write
 
 jobs:
-  version:
+  get_version:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version_step.outputs.version }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Version from latest tag
+        id: version_step
         run: |
           VERSION=$(git describe --tags --abbrev=0)
           echo $VERSION
@@ -36,7 +39,7 @@ jobs:
         run: ./gen-typescript.sh prerelease ${VERSION}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          VERSION: ${{ needs.version.outputs.version }}
+          VERSION: ${{ needs.get_version.outputs.version }}
 
   # generate-swift-package:
   #   needs: version

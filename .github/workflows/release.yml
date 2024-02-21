@@ -31,7 +31,7 @@ jobs:
           PREV_VERSION=$(git checkout -q HEAD^ && npm pkg get version && git switch -q -)
           CURR_VERSION=$(npm pkg get version)
           echo "versionChanged=$(if [ "$PREV_VERSION" = "$CURR_VERSION" ]; then echo "false"; else echo "true"; fi)" >> $GITHUB_OUTPUT
-          echo "version=$(npm pkg get version | xargs)" >> $GITHUB_OUTPUT
+          echo "version=$(echo $CURR_VERSION | xargs)" >> $GITHUB_OUTPUT
 
       - run: npm install
 

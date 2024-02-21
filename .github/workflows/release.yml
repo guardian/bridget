@@ -48,6 +48,7 @@ jobs:
         run: ./gen-typescript.sh release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION: ${{ steps.version_check.outputs.version }}
 
       - name: Publish Android
         if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.versionChanged == 'true'
@@ -56,6 +57,7 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "android"
           release_type: "release"
+          version: ${{ steps.version_check.outputs.version }}
 
       - name: Publish iOS
         if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.versionChanged == 'true'
@@ -64,6 +66,7 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "ios"
           release_type: "release"
+          version: ${{ steps.version_check.outputs.version }}
 
       - name: Create release in GitHub
         uses: changesets/action@v1

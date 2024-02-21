@@ -70,8 +70,9 @@ jobs:
 
       - name: Create release in GitHub
         uses: changesets/action@v1
+        if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.outputs.versionChanged == 'true'
         with:
           # We've already published above, but changesets needs this command to exit successfully to create the release in GitHub
-          publish: exit 0
+          publish: node -e true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

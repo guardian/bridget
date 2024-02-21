@@ -1,0 +1,52 @@
+name: Create release PR or Release Packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  manage_release:
+    name: Create release PR or Release Packages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: "npm"
+          node-version-file: ".nvmrc"
+
+      - run: npm install
+
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        id: changesets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # The steps below here only run when there's something to publish
+
+      - name: Publish NPM
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: ./gen-typescript.sh
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Android
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}
+          platform: "android"
+
+      - name: Publish iOS
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ secrets.ACCESS_TOKEN }}
+          platform: "ios"

@@ -45,7 +45,7 @@ jobs:
 
       - name: Publish NPM
         if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.outputs.versionChanged == 'true'
-        run: ./gen-typescript.sh release
+        run: ./gen-typescript.sh release ${VERSION}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ steps.version_check.outputs.version }}

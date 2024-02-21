@@ -4,6 +4,7 @@
 export ACCESS_TOKEN=$1
 export PLATFORM=$2
 export RELEASE_TYPE=$3
+export VERSION=$4
 
 if [ -z "$RELEASE_TYPE" ] || ! [[ "$RELEASE_TYPE" =~ ^(pre)?release$ ]];
 then
@@ -22,16 +23,15 @@ git clone https://github.com/guardian/bridget.git
 
 cd bridget
 git checkout $GITHUB_REF
-CURRENT_VERSION="$(git describe --tags --abbrev=0)"
 # Add a -branch suffix so the prerelease tag and branch do not have the same name
-PRERELEASE_BRANCH_NAME="$CURRENT_VERSION-branch"
+PRERELEASE_BRANCH_NAME="$VERSION-branch"
 cd ../
 
 # Add version const to thrift file
 echo "" >> bridget/thrift/native.thrift
-echo "const string BRIDGET_VERSION = \"$CURRENT_VERSION\"" >>  bridget/thrift/native.thrift
+echo "const string BRIDGET_VERSION = \"$VERSION\"" >>  bridget/thrift/native.thrift
 
-echo "Publishing $RELEASE_TYPE to platform $PLATFORM with version $CURRENT_VERSION"
+echo "Publishing $RELEASE_TYPE to platform $PLATFORM with version $VERSION"
 # Platform tasks
 if [ "$PLATFORM" == "ios" ]; then
 
@@ -54,14 +54,14 @@ if [ "$PLATFORM" == "ios" ]; then
     cd bridget-swift
     if [[ -n `git diff` ]]; then
         git add Sources/Bridget/*.swift
-        git commit -m "Update Swift models $CURRENT_VERSION"
+        git commit -m "Update Swift models $VERSION"
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
             git push -u origin $PRERELEASE_BRANCH_NAME
         else
             git push origin main
         fi
-        git tag $CURRENT_VERSION
+        git tag $VERSION
         git push --tags
     fi
 elif [ "$PLATFORM" == "android" ]; then
@@ -94,14 +94,14 @@ elif [ "$PLATFORM" == "android" ]; then
     cd bridget-android
     if [[ -n `git diff` ]]; then
         git add library/src/main/*
-        git commit -m "Update Thrift generated classes $CURRENT_VERSION"
+        git commit -m "Update Thrift generated classes $VERSION"
         if [ "$RELEASE_TYPE" = "prerelease" ];
         then
             git push -u origin $PRERELEASE_BRANCH_NAME
         else
             git push origin main
         fi
-        git tag $CURRENT_VERSION
+        git tag $VERSION
         git push --tags
     fi
 else

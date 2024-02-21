@@ -12,3 +12,4 @@ runs:
     - ${{ inputs.access_token }}
     - ${{ inputs.platform }}
     - ${{ inputs.release_type }}
+    - ${{ inputs.version }}

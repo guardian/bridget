@@ -6,23 +6,43 @@ permissions:
   contents: write
 
 jobs:
+  get_version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version_step.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version from latest tag
+        id: version_step
+        run: |
+          VERSION=$(git describe --tags --abbrev=0)
+          echo $VERSION
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
   generate-typescript-package:
+    needs: get_version
     if: "github.event.release.prerelease"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           cache: "npm"
           node-version-file: ".nvmrc"
+
       - name: install
         run: npm install
+
       - name: generate and publish
-        run: ./gen-typescript.sh prerelease
+        run: ./gen-typescript.sh prerelease ${VERSION}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION: ${{ needs.get_version.outputs.version }}
 
   generate-swift-package:
+    needs: get_version
     runs-on: ubuntu-latest
     if: "github.event.release.prerelease"
     steps:
@@ -32,8 +52,10 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "ios"
           release_type: "prerelease"
+          version: ${{ needs.get_version.outputs.version }}
 
   generate-android-package:
+    needs: get_version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,3 +64,4 @@ jobs:
           access_token: ${{ secrets.ACCESS_TOKEN }}
           platform: "android"
           release_type: "prerelease"
+          version: ${{ needs.get_version.outputs.version }}

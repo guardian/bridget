@@ -1,9 +1,15 @@
 RELEASE_TYPE=$1
+VERSION=$2
 
 if [ -z "$RELEASE_TYPE" ] || ! [[ "$RELEASE_TYPE" =~ ^(pre)?release$ ]];
 then
-    echo "Please specify a release type: prerelease or release";
-    echo "e.g gen-typescript.sh prerelease";
+    echo "Please specify a release type as the 1st argument: prerelease or release";
+    exit 1
+fi
+
+if [ -z "$VERSION" ];
+then
+    echo "Please specify a version as the 2nd argument"
     exit 1
 fi
 
@@ -25,17 +31,14 @@ echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 # remove TypeScript files
 ls | grep "^[A-Za-z]*.ts" | xargs rm
 
-# use repo tag for version
-CURRENT_FULL_VERSION="$(git describe --tags --abbrev=0)"
-
 # publish to npm
-npm version ${CURRENT_FULL_VERSION}
+npm version ${VERSION}
 
 if [ "$RELEASE_TYPE" = "prerelease" ];
 then
-    echo "Publishing prerelease with version $CURRENT_FULL_VERSION"
+    echo "Publishing prerelease with version $VERSION"
     npm publish --tag snapshot
 else
-    echo "Publishing full release with version $CURRENT_FULL_VERSION"
+    echo "Publishing full release with version $VERSION"
     npm publish --access public
 fi

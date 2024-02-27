@@ -13,6 +13,14 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          owner: guardian
+          repositories: "bridget,bridget-android,bridget-swift"
+
       - uses: actions/checkout@v4
         with:
           # Get the latest 2 commits so we can compare the versions in package.json
@@ -39,7 +47,7 @@ jobs:
         uses: changesets/action@v1
         id: changesets
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
       # The steps below here only run when there's something to publish
 
@@ -54,7 +62,7 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.outputs.versionChanged == 'true'
         uses: ./.github/actions/generate-native-package
         with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
+          access_token: ${{ steps.app-token.outputs.token }}
           platform: "android"
           release_type: "release"
           version: ${{ steps.version_check.outputs.version }}
@@ -63,7 +71,7 @@ jobs:
         if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.outputs.versionChanged == 'true'
         uses: ./.github/actions/generate-native-package
         with:
-          access_token: ${{ secrets.ACCESS_TOKEN }}
+          access_token: ${{ steps.app-token.outputs.token }}
           platform: "ios"
           release_type: "release"
           version: ${{ steps.version_check.outputs.version }}
@@ -75,4 +83,4 @@ jobs:
           # We've already published above, but changesets needs this command to exit successfully to create the release in GitHub
           publish: node -e true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}

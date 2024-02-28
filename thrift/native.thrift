@@ -103,7 +103,9 @@ service User {
     bool isPremium(),
     list<string> filterSeenArticles(1:list<string> articleIds),
     string discussionId(),
-    bool doesCcpaApply()
+    bool doesCcpaApply(),
+    bool isSignedIn(),
+    void signIn(),
 }
 
 service Gallery {

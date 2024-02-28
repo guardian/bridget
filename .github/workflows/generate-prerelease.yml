@@ -52,7 +52,7 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-          repositories: "bridget,bridget-android,bridget-swift"
+          repositories: "guardian/bridget,guardian/bridget-android,guardian/bridget-swift"
 
       - uses: actions/checkout@v4
       - uses: ./.github/actions/generate-native-package
@@ -72,7 +72,7 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           owner: guardian
-          repositories: guardian/bridget-android
+          repositories: "guardian/bridget,guardian/bridget-android"
 
       - uses: actions/checkout@v4
       - uses: ./.github/actions/generate-native-package

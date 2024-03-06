@@ -71,6 +71,24 @@ enum PurchaseScreenReason {
     epic = 1
 }
 
+enum SignInScreenReason {
+    saveForLater = 0,
+    postComment = 1,
+    recommendComment = 2,
+    replyToComment = 3,
+    reportComment = 4,
+    personaliseHome = 5,
+    profile = 6,
+    premiumTier = 7,
+    passwordChanged = 8,
+    meteredUser = 9,
+    signOrRegisterOnThankYou = 10,
+    followContributorTag = 11,
+    signInOnAdjustDeeplink = 12,
+    mandatorySignIn = 13,
+
+}
+
 service Environment {
     string nativeThriftPackageVersion()
     bool isMyGuardianEnabled()
@@ -105,7 +123,7 @@ service User {
     string discussionId(),
     bool doesCcpaApply(),
     bool isSignedIn(),
-    void signIn(),
+    void signIn(1:SignInScreenReason reason),
 }
 
 service Gallery {

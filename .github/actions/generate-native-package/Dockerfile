@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ENV THRIFT_VERSION v0.14.0-gu5
+ENV THRIFT_VERSION v0.19-gubeta
 
 RUN apt-get update
 RUN apt-get install -y git

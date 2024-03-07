@@ -59,13 +59,6 @@ union Metric {
     3: MetricFont font;
 }
 
-struct CommentResponse {
-    1: required string status;
-    2: required i32 statusCode;
-    3: required string message;
-    4: optional string errorCode;
-}
-
 enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
@@ -119,12 +112,58 @@ service Metrics {
     void sendMetrics(1:list<Metric> metrics)
 }
 
+struct DiscussionBadge {
+    1: required string name;
+}
+
+struct DiscussionUserProfile {
+    1: required string userId;
+    2: required string displayName;
+    3: required string webUrl;
+    4: required string apiUrl;
+    5: required string avatar;
+    6: required string secureAvatarUrl;
+    7: required list<DiscussionBadge> badge;
+    8: required bool canPostComment;
+    9: required bool isPremoderated;
+    10: required bool hasCommented;
+}
+
+ struct DiscussionApiResponse {
+     1: required string status;
+     2: required i32 statusCode;
+     3: required string message;
+     4: optional string errorCode;
+ }
+
+ enum DiscussionNativeError {
+    UNKNOWN_ERROR = 0
+ }
+
+union DiscussionResponse {
+    1: DiscussionApiResponse response;
+    2: DiscussionNativeError error;
+}
+
+union GetUserProfileResponse {
+    1:DiscussionUserProfile profile;
+    2:DiscussionNativeError error;
+}
+
+struct ReportAbuseParameters {
+    1:string commentId;
+    2: string categoryId;
+    3:optional string reason;
+    4:optional string email;
+}
+
 service Discussion {
-    string preview(1:string body),
-    bool isDiscussionEnabled(),
-    bool recommend(1:i32 commentId),
-    CommentResponse comment(1:string shortUrl, 2:string body),
-    CommentResponse reply(1:string shortUrl, 2:string body, 3:i32 parentCommentId)
+    GetUserProfileResponse getUserProfile(),
+    DiscussionResponse comment(1:string shortUrl, 2:string body),
+    DiscussionResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
+    DiscussionResponse recommend(1:string commentId),
+    DiscussionResponse addUsername(1:string username),
+    DiscussionResponse reportAbuse(1:ReportAbuseParameters parameters)
 }
 
 service Analytics {

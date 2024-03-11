@@ -61,7 +61,7 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           owner: guardian
-          repositories: ${{ join(fromJSON('["bridget", matrix.repo]')) }}
+          repositories: ${{ format('bridget,${0}', matrix.repo) }}
 
       - uses: actions/checkout@v4
 

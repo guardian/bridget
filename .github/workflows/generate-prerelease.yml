@@ -48,7 +48,11 @@ jobs:
     strategy:
       fail-fast: false # do not cancel other in progress jobs if any single one fails
       matrix:
-        platform: [ios, android]
+        include:
+          - platform: android
+            repo: bridget-android
+          - platform: ios
+            repo: bridget-swift
 
     steps:
       - uses: actions/create-github-app-token@v1
@@ -57,7 +61,7 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           owner: guardian
-          repositories: "bridget,bridget-swift,bridget-android"
+          repositories: ${{ join(['bridget', matrix.repo]) }}
 
       - uses: actions/checkout@v4
 

@@ -1,5 +1,11 @@
 # bridget
 
+## 2.8.1
+
+### Patch Changes
+
+- 798b422: Version bump to trigger a release
+
 ## 2.8.0
 
 ### Minor Changes

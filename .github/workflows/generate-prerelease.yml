@@ -50,9 +50,9 @@ jobs:
       matrix:
         include:
           - platform: android
-            repo: bridget-android
+            repository: bridget-android
           - platform: ios
-            repo: bridget-swift
+            repository: bridget-swift
 
     steps:
       - uses: actions/create-github-app-token@v1
@@ -61,7 +61,7 @@ jobs:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
           owner: guardian
-          repositories: ${{ format('bridget,{0}', matrix.repo) }} # e.g "bridget,bridget-swift"
+          repositories: ${{ format('bridget,{0}', matrix.repository) }} # e.g "bridget,bridget-swift"
 
       - uses: actions/checkout@v4
 

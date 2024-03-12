@@ -31,6 +31,8 @@ jobs:
 
   changesets_release_pr:
     runs-on: ubuntu-latest
+    outputs:
+      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

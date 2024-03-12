@@ -78,6 +78,13 @@ enum SignInScreenReason {
     reportComment = 3
 }
 
+enum SignInScreenReferrer {
+    postComment = 0,
+    recommendComment = 1,
+    replyToComment = 2,
+    reportComment = 3
+}
+
 service Environment {
     string nativeThriftPackageVersion()
     bool isMyGuardianEnabled()

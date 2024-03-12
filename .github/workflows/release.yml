@@ -96,8 +96,8 @@ jobs:
           release_type: "release"
           version: ${{ needs.version_check.outputs.version }}
 
-  manage_release:
-    name: Create release PR or Release Packages
+  create_github_release:
+    name: Create GitHub Release
     runs-on: ubuntu-latest
     if: steps.changesets.outputs.hasChangesets == 'false' && steps.version_check.outputs.versionChanged == 'true'
     needs: [npm_release, native_release]

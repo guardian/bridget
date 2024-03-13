@@ -78,6 +78,13 @@ enum SignInScreenReason {
     reportComment = 3
 }
 
+enum SignInScreenReferrer {
+    postComment = 0,
+    recommendComment = 1,
+    replyToComment = 2,
+    reportComment = 3
+}
+
 service Environment {
     string nativeThriftPackageVersion()
     bool isMyGuardianEnabled()
@@ -112,7 +119,7 @@ service User {
     string discussionId(),
     bool doesCcpaApply(),
     bool isSignedIn(),
-    void signIn(1:SignInScreenReason reason),
+    void signIn(1:SignInScreenReason reason, 2:SignInScreenReferrer referrer),
 }
 
 service Gallery {

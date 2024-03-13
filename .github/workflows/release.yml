@@ -104,6 +104,7 @@ jobs:
     if: needs.changesets_release_pr.outputs.hasChangesets == 'false' && needs.version_check.outputs.versionChanged == 'true'
     needs: [changesets_release_pr, version_check, npm_release, native_release]
     steps:
+      - uses: actions/checkout@v4
       - name: Create release in GitHub
         uses: changesets/action@v1
         with:

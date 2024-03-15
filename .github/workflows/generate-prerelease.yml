@@ -43,6 +43,7 @@ jobs:
 
   native-release:
     needs: get_version
+    if: "github.event.release.prerelease"
     runs-on: ubuntu-latest
 
     strategy:

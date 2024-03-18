@@ -72,17 +72,19 @@ enum PurchaseScreenReason {
 }
 
 enum SignInScreenReason {
-    postComment = 0,
-    recommendComment = 1,
-    replyToComment = 2,
-    reportComment = 3
+    accessDiscussion = 0
+    postComment = 1,
+    recommendComment = 2,
+    replyToComment = 3,
+    reportComment = 4
 }
 
 enum SignInScreenReferrer {
-    postComment = 0,
-    recommendComment = 1,
-    replyToComment = 2,
-    reportComment = 3
+    accessDiscussion = 0
+    postComment = 1,
+    recommendComment = 2,
+    replyToComment = 3,
+    reportComment = 4
 }
 
 service Environment {

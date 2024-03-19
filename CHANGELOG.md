@@ -1,5 +1,11 @@
 # bridget
 
+## 2.9.0
+
+### Minor Changes
+
+- 7c91206: Add `isSignedIn` and `signIn` methods to `User` service
+
 ## 2.8.1
 
 ### Patch Changes

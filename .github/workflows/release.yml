@@ -106,9 +106,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # This tag will get pushed by the Changesets action in the next step!
       - name: Tag local repository
         run: |
-          git tag -m "$VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -m "$VERSION" $VERSION
         env:
           VERSION: ${{ needs.version_check.outputs.version }}
 
@@ -118,6 +121,6 @@ jobs:
           # The actual release process has already completed in jobs npm_release and native_release
           # Changesets will only create the tags/release if it sees "New tag:" in the publish command's output
           # See https://github.com/changesets/action/blob/63ffd93140be6000b385d611d886a82c86214719/src/run.ts#L176
-          publish: node -e "console.log('New tag:');"
+          publish: "echo 'New tag:'"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

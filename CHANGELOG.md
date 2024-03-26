@@ -1,5 +1,11 @@
 # bridget
 
+## 3.0.0
+
+### Major Changes
+
+- 3c8eb3c: Replace previous disucssion service stubs with new recommend signature
+
 ## 2.9.0
 
 ### Minor Changes

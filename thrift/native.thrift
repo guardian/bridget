@@ -114,7 +114,7 @@ service User {
     string discussionId(),
     bool doesCcpaApply(),
     bool isSignedIn(),
-    void signIn(1:SignInScreenReason reason, 2:SignInScreenReferrer referrer),
+    bool signIn(1:SignInScreenReason reason, 2:SignInScreenReferrer referrer),
 }
 
 service Gallery {

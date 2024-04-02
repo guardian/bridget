@@ -1,5 +1,11 @@
 # bridget
 
+## 4.0.0
+
+### Major Changes
+
+- a717da0: Return a boolean when a user signs in
+
 ## 3.0.0
 
 ### Major Changes

@@ -155,15 +155,15 @@ struct DiscussionApiResponse {
 }
 
 union GetUserProfileResponse {
-    1:DiscussionUserProfile profile;
-    2:DiscussionNativeError error;
+    1: DiscussionUserProfile profile;
+    2: DiscussionNativeError error;
 }
 
 struct ReportAbuseParameters {
-    1:string commentId;
+    1: string commentId;
     2: string categoryId;
-    3:optional string reason;
-    4:optional string email;
+    3: optional string reason;
+    4: optional string email;
 }
 
 enum DiscussionNativeError {

@@ -175,6 +175,10 @@ union DiscussionResponse {
     2: DiscussionNativeError error;
 }
 
+struct AddUsernameError {
+    1: string message;
+}
+
 struct AddUsernameApiResponse {
     1: string status;
     2: optional list<AddUsernameError> errors;

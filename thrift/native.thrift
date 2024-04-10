@@ -175,13 +175,23 @@ union DiscussionResponse {
     2: DiscussionNativeError error;
 }
 
+struct AddUsernameApiResponse {
+    1: string status;
+    2: optional list<AddUsernameError> errors;
+}
+
+union AddUsernameResponse {
+    1: AddUsernameApiResponse response;
+    2: DiscussionNativeError error;
+}
+
 service Discussion {
     DiscussionResponse recommend(1:string commentId),
     GetUserProfileResponse getUserProfile(),
     DiscussionResponse comment(1:string shortUrl, 2:string body),
     DiscussionResponse preview(1:string body),
     DiscussionResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
-    DiscussionResponse addUsername(1:string username),
+    AddUsernameResponse addUsername(1:string username),
     DiscussionResponse reportAbuse(1:ReportAbuseParameters parameters)
 }
 

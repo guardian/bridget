@@ -190,13 +190,13 @@ union AddUsernameResponse {
 }
 
 service Discussion {
+    AddUsernameResponse addUsername(1:string username),
     DiscussionResponse recommend(1:string commentId),
-    GetUserProfileResponse getUserProfile(),
     DiscussionResponse comment(1:string shortUrl, 2:string body),
     DiscussionResponse preview(1:string body),
     DiscussionResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
-    AddUsernameResponse addUsername(1:string username),
     DiscussionResponse reportAbuse(1:ReportAbuseParameters parameters)
+    GetUserProfileResponse getUserProfile(),
 }
 
 service Analytics {

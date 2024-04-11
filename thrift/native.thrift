@@ -160,8 +160,8 @@ union GetUserProfileResponse {
 }
 
 struct ReportAbuseParameters {
-    1: string commentId;
-    2: string categoryId;
+    1: required string commentId;
+    2: required string categoryId;
     3: optional string reason;
     4: optional string email;
 }
@@ -176,11 +176,11 @@ union DiscussionResponse {
 }
 
 struct AddUsernameError {
-    1: string message;
+    1: required string message;
 }
 
 struct AddUsernameApiResponse {
-    1: string status;
+    1: required string status;
     2: optional list<AddUsernameError> errors;
 }
 

@@ -1,5 +1,11 @@
 # bridget
 
+## 5.0.0
+
+### Major Changes
+
+- f3fefa7: Add remaining discussion methods
+
 ## 4.0.0
 
 ### Major Changes

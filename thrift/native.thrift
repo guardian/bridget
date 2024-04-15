@@ -159,13 +159,6 @@ union GetUserProfileResponse {
     2: DiscussionNativeError error;
 }
 
-struct ReportAbuseParameters {
-    1: required string commentId;
-    2: required string categoryId;
-    3: optional string reason;
-    4: optional string email;
-}
-
 enum DiscussionNativeError {
     UNKNOWN_ERROR = 0
 }
@@ -178,9 +171,7 @@ union DiscussionResponse {
 service Discussion {
     DiscussionResponse recommend(1:string commentId),
     DiscussionResponse comment(1:string shortUrl, 2:string body),
-    DiscussionResponse preview(1:string body),
     DiscussionResponse reply(1:string shortUrl, 2:string body, 3:string parentCommentId),
-    DiscussionResponse reportAbuse(1:ReportAbuseParameters parameters)
     GetUserProfileResponse getUserProfile(),
 }
 

@@ -15,5 +15,5 @@ jobs:
   validate-thrift:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@4
       - uses: ./.github/actions/validate-thrift

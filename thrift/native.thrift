@@ -140,6 +140,7 @@ union DiscussionServiceResponse {
     2: DiscussionNativeError error;
 }
 
+/** only available for signed in user, see https://github.com/guardian/bridget/issues/149 */
 service Discussion {
     DiscussionServiceResponse recommend(1:string commentId),
     DiscussionServiceResponse comment(1:string shortUrl, 2:string body),
@@ -161,7 +162,7 @@ service Navigation {
  * added  version 2.0.0
  * methods:
  *  - requestSignUp: request to sign up to a newsletter using an email address entered by the user.
- * Returns `true` if the request was successful, `false` if it failed for any reason. Exceptions 
+ * Returns `true` if the request was successful, `false` if it failed for any reason. Exceptions
  * thrown will be discarded.
  */
 service Newsletters {

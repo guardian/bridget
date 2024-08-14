@@ -53,6 +53,11 @@ struct MetricFont {
     3: optional string name;
 }
 
+struct VideoEvent {
+    1: required string videoId;
+    2: required string event;
+}
+
 union Metric {
     1: MetricPaint firstPaint;
     2: MetricPaint firstContentfulPaint;
@@ -123,7 +128,8 @@ service Gallery {
 
 service Videos {
     void insertVideos(1:list<VideoSlot> videoSlots),
-    void updateVideos(1:list<VideoSlot> videoSlots)
+    void updateVideos(1:list<VideoSlot> videoSlots),
+    void sendVideoEvent(1:VideoEvent videoEvent),
 }
 
 service Metrics {

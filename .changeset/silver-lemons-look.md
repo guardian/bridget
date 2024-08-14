@@ -1,0 +1,5 @@
+---
+"bridget": major
+---
+
+Add sendVideoEvent

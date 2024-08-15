@@ -140,6 +140,7 @@ service Videos {
     void insertVideos(1:list<VideoSlot> videoSlots),
     void updateVideos(1:list<VideoSlot> videoSlots),
     void sendVideoEvent(1:VideoEvent videoEvent),
+    void fullscreen(),
 }
 
 service Metrics {

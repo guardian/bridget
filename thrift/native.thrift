@@ -53,15 +53,25 @@ struct MetricFont {
     3: optional string name;
 }
 
-struct VideoEvent {
-    1: required string videoId;
-    2: required string event;
-}
-
 union Metric {
     1: MetricPaint firstPaint;
     2: MetricPaint firstContentfulPaint;
     3: MetricFont font;
+}
+
+enum MediaEvent {
+    request = 0,
+    ready = 1,
+    play = 2,
+    percent25 = 3,
+    percent50 = 4,
+    percent75 = 5,
+    end = 6
+}
+
+struct VideoEvent {
+    1: required string videoId;
+    2: required MediaEvent event;
 }
 
 enum PurchaseScreenReason {

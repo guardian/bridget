@@ -70,6 +70,7 @@ enum MediaEvent {
 }
 
 struct VideoEvent {
+    /** for YouTube Atoms videoId should the atom id  */
     1: required string videoId;
     2: required MediaEvent event;
 }
@@ -140,6 +141,7 @@ service Videos {
     void insertVideos(1:list<VideoSlot> videoSlots),
     void updateVideos(1:list<VideoSlot> videoSlots),
     void sendVideoEvent(1:VideoEvent videoEvent),
+    /** Android only */
     void fullscreen(),
 }
 

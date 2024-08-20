@@ -59,6 +59,22 @@ union Metric {
     3: MetricFont font;
 }
 
+enum MediaEvent {
+    request = 0,
+    ready = 1,
+    play = 2,
+    percent25 = 3,
+    percent50 = 4,
+    percent75 = 5,
+    end = 6
+}
+
+struct VideoEvent {
+    /** for YouTube Atoms videoId should the atom id  */
+    1: required string videoId;
+    2: required MediaEvent event;
+}
+
 enum PurchaseScreenReason {
     hideAds = 0,
     epic = 1
@@ -123,7 +139,10 @@ service Gallery {
 
 service Videos {
     void insertVideos(1:list<VideoSlot> videoSlots),
-    void updateVideos(1:list<VideoSlot> videoSlots)
+    void updateVideos(1:list<VideoSlot> videoSlots),
+    void sendVideoEvent(1:VideoEvent videoEvent),
+    /** Android only */
+    void fullscreen(),
 }
 
 service Metrics {

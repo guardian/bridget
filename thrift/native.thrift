@@ -142,7 +142,7 @@ service Videos {
     void updateVideos(1:list<VideoSlot> videoSlots),
     void sendVideoEvent(1:VideoEvent videoEvent),
     /** Android only */
-    void fullscreen(),
+    void setFullscreen(1:bool isFullscreen),
 }
 
 service Metrics {

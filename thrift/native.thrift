@@ -143,6 +143,8 @@ service Videos {
     void sendVideoEvent(1:VideoEvent videoEvent),
     /** Android only */
     void setFullscreen(1:bool isFullscreen),
+    /** Android requires the web layer to resize and style the player for fullscreen */
+    bool webFullscreen(),
 }
 
 service Metrics {

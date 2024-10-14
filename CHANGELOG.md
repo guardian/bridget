@@ -1,5 +1,11 @@
 # bridget
 
+## 8.0.0
+
+### Major Changes
+
+- e7036dc: Replace `void fullscreen()` method with `bool setFullscreen(bool isFullscreen)`
+
 ## 7.0.0
 
 ### Major Changes

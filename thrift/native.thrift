@@ -196,3 +196,12 @@ service Navigation {
 service Newsletters {
     bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }
+
+service Carousel {
+    /**
+     * Notify the native layer that the user has started or stopped interacting with the carousel.
+     *
+     * @param isTouching true if the user has started touching the carousel, false otherwise
+     */
+    void setCarouselInteraction(1:bool isTouching)
+}

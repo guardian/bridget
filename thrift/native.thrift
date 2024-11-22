@@ -197,11 +197,11 @@ service Newsletters {
     bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }
 
-service Touch {
+service Interaction {
     /**
-     * Notify the native layer that the user has started or stopped touching.
+     * Notify the native layer to disable the article swipe feature.
      *
-     * @param isTouching true if the user has started touching, false otherwise
+     * @param disableSwipe true if native needs to disable article swipe
      */
-    void setIsTouching(1:bool isTouching)
+    void disableArticleSwipe(1:bool disableSwipe)
 }

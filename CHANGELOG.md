@@ -1,5 +1,11 @@
 # bridget
 
+## 8.1.0
+
+### Minor Changes
+
+- bc1eda3: Add Service Interaction and disableArticleSwipe function
+
 ## 8.0.0
 
 ### Major Changes

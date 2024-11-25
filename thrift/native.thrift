@@ -196,3 +196,12 @@ service Navigation {
 service Newsletters {
     bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
 }
+
+service Interaction {
+    /**
+     * Notify the native layer to disable the article swipe feature.
+     *
+     * @param disableSwipe true if native needs to disable article swipe
+     */
+    void disableArticleSwipe(1:bool disableSwipe)
+}

@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ENV THRIFT_VERSION v0.21.0
+ENV FRENCH_THRIFT_VERSION v0.19.0-gu1
 
 RUN apt-get update
 RUN apt-get install -y git
@@ -23,7 +23,7 @@ RUN buildDeps=" \
 	pkg-config \
 	"; \
 	apt-get install -y --no-install-recommends $buildDeps && rm -rf /var/lib/apt/lists/* \
-	&& curl -k -sSL "https://github.com/apache/thrift/archive/${THRIFT_VERSION}.tar.gz" -o thrift.tar.gz \
+	&& curl -k -sSL "https://github.com/guardian/french-thrift/archive/${FRENCH_THRIFT_VERSION}.tar.gz" -o thrift.tar.gz \
 	&& mkdir -p /usr/src/thrift \
 	&& tar zxf thrift.tar.gz -C /usr/src/thrift --strip-components=1 \
 	&& rm thrift.tar.gz \

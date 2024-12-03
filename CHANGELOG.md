@@ -1,5 +1,11 @@
 # bridget
 
+## 8.2.0
+
+### Minor Changes
+
+- 159208d: Update Dockerfiles to point to Apache Thrift
+
 ## 8.1.0
 
 ### Minor Changes

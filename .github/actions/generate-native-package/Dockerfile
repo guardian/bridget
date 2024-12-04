@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ENV FRENCH_THRIFT_VERSION v0.19.0-gu1
+ENV FRENCH_THRIFT_VERSION v0.21.0-prerelease
 
 RUN apt-get update
 RUN apt-get install -y git

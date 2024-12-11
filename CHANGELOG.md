@@ -1,5 +1,11 @@
 # bridget
 
+## 8.2.0
+
+### Minor Changes
+
+- be4b32d: Update to french-thrift@v0.21.0-gu2
+
 ## 8.1.0
 
 ### Minor Changes

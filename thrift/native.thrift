@@ -103,7 +103,8 @@ service Environment {
 
 service Commercial {
     void insertAdverts(1:list<AdSlot> adSlots),
-    void updateAdverts(1:list<AdSlot> adSlots)
+    void updateAdverts(1:list<AdSlot> adSlots),
+    void sendTargetingParams(1:map<string, string> targetingParams)    
 }
 
 service Acquisitions {

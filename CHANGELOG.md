@@ -1,5 +1,11 @@
 # bridget
 
+## 8.3.0
+
+### Minor Changes
+
+- 68b1fff: Copy sendTargetingParams method from analytics to commercial service
+
 ## 8.2.0
 
 ### Minor Changes

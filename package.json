@@ -1,6 +1,6 @@
 {
   "name": "bridget",
-  "version": "8.3.0",
+  "version": "8.3.1",
   "description": "Thrift files defining the API between native layers (iOS, Android) and [Webview](https://github.com/guardian/apps-rendering).",
   "main": "index.js",
   "scripts": {

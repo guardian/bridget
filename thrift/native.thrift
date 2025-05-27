@@ -98,6 +98,7 @@ enum SignInScreenReferrer {
 
 service Environment {
     string nativeThriftPackageVersion()
+    string nativePlatform()
     bool isMyGuardianEnabled()
 }
 

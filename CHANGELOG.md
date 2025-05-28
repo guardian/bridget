@@ -1,5 +1,11 @@
 # bridget
 
+## 8.4.0
+
+### Minor Changes
+
+- 18a85c5: Add nativePlatform function
+
 ## 8.3.3
 
 ### Patch Changes

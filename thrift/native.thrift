@@ -96,6 +96,11 @@ enum SignInScreenReferrer {
     reportComment = 4
 }
 
+enum NativePlatform {
+    ios = 0,
+    android = 1
+}
+
 service Environment {
     string nativeThriftPackageVersion()
     bool isMyGuardianEnabled()
@@ -205,4 +210,8 @@ service Interaction {
      * @param disableSwipe true if native needs to disable article swipe
      */
     void disableArticleSwipe(1:bool disableSwipe)
+}
+
+service Interactives {
+    NativePlatform getNativePlatform(),
 }

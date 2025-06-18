@@ -130,6 +130,11 @@ service Notifications {
     bool isFollowing(1:Topic topic),
 }
 
+service ListenToArticle {
+    bool shouldDisplayButton()
+    void playAudio()
+}
+
 service User {
     bool isPremium(),
     list<string> filterSeenArticles(1:list<string> articleIds),

@@ -21,7 +21,7 @@
     "@creditkarma/thrift-typescript": "3.7.6",
     "json": "11.0.0",
     "typescript": "5.3.3",
-    "@changesets/cli": "2.29.4"
+    "@changesets/cli": "2.29.5"
   },
   "keywords": []
 }

@@ -131,8 +131,9 @@ service Notifications {
 }
 
 service ListenToArticle {
-    bool shouldDisplayButton()
-    void playAudio()
+    bool shouldDisplayButton(1: string articleId)
+    bool playAudio(1: string articleId)
+    bool isPlayingAudio(1: string articleId)
 }
 
 service User {

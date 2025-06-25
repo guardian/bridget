@@ -135,6 +135,7 @@ service ListenToArticle {
     bool shouldDisplayButton(1: string articleId)
     bool playAudio(1: string articleId)
     bool isPlayingAudio(1: string articleId)
+    bool pauseAudio(1: string articleId)
 }
 
 service User {

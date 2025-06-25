@@ -104,6 +104,7 @@ enum NativePlatform {
 service Environment {
     string nativeThriftPackageVersion()
     bool isMyGuardianEnabled()
+    bool isListenToArticleEnabled()
 }
 
 service Commercial {

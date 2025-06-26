@@ -104,6 +104,7 @@ enum NativePlatform {
 service Environment {
     string nativeThriftPackageVersion()
     bool isMyGuardianEnabled()
+    bool isListenToArticleEnabled()
 }
 
 service Commercial {
@@ -128,6 +129,13 @@ service Notifications {
     bool follow(1:Topic topic),
     bool unfollow(1:Topic topic),
     bool isFollowing(1:Topic topic),
+}
+
+service ListenToArticle {
+    bool isAvailable(1: string articleId)
+    bool play(1: string articleId)
+    bool isPlaying(1: string articleId)
+    bool pause(1: string articleId)
 }
 
 service User {

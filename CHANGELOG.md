@@ -1,5 +1,11 @@
 # bridget
 
+## 8.4.1
+
+### Patch Changes
+
+- Update listen to article buttons
+
 ## 8.4.0
 
 ### Minor Changes

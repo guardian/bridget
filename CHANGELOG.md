@@ -1,5 +1,11 @@
 # bridget
 
+## 8.5.0
+
+### Minor Changes
+
+- da6639f: Add methods for listen to article button
+
 ## 8.4.0
 
 ### Minor Changes

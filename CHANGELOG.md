@@ -1,5 +1,11 @@
 # bridget
 
+## 8.5.1
+
+### Patch Changes
+
+- b611f15: Remove isListenToArticleEnabled flag as we won't use it
+
 ## 8.5.0
 
 ### Minor Changes

@@ -132,10 +132,10 @@ service Notifications {
 }
 
 service ListenToArticle {
-    bool audioExists(1: string articleId)
-    bool playAudio(1: string articleId)
-    bool isPlayingAudio(1: string articleId)
-    bool pauseAudio(1: string articleId)
+    bool isAvailable(1: string articleId)
+    bool play(1: string articleId)
+    bool isPlaying(1: string articleId)
+    bool pause(1: string articleId)
 }
 
 service User {

@@ -132,6 +132,7 @@ service Notifications {
 
 service ListenToArticle {
     bool isAvailable(1: string articleId)
+    i32  getAudioDuration (1: string articleId)
     bool play(1: string articleId)
     bool isPlaying(1: string articleId)
     bool pause(1: string articleId)

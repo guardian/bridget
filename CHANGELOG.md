@@ -1,5 +1,11 @@
 # bridget
 
+## 8.6.0
+
+### Minor Changes
+
+- c3f6ff3: Add ListenToArticle.getAudioDurationSeconds
+
 ## 8.5.1
 
 ### Patch Changes

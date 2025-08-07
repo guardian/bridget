@@ -1,5 +1,11 @@
 # bridget
 
+## 8.7.0
+
+### Minor Changes
+
+- d39357c: Add AbTesting Service
+
 ## 8.6.0
 
 ### Minor Changes

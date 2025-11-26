@@ -1,5 +1,11 @@
 # bridget
 
+## 8.7.1
+
+### Patch Changes
+
+- a29b0e2: Update Node to v22 from v20. This should be an internal change only and shouldn't affect consumers.
+
 ## 8.7.0
 
 ### Minor Changes

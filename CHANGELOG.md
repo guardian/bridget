@@ -1,5 +1,11 @@
 # bridget
 
+## 8.7.2
+
+### Patch Changes
+
+- 284e7ff: Update Node to v24 from v22. This should be an internal change only and shouldn't affect consumers.
+
 ## 8.7.1
 
 ### Patch Changes

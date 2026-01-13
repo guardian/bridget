@@ -45,7 +45,9 @@ jobs:
           cache: npm
           node-version-file: ".nvmrc"
 
-      - run: npm install
+      - run: npm ci
+
+      - run: npm install -g npm@latest
 
       - uses: changesets/action@v1
         id: changesets
@@ -63,12 +65,10 @@ jobs:
           cache: npm
           node-version-file: ".nvmrc"
 
-      - run: npm install
+      - run: npm ci
 
-      # See https://docs.npmjs.com/trusted-publishers
-      # Find the latest version with `npm info npm@latest version`
-      - name: Install suitable NPM version for trusted publishing
-        run: npm install -g npm@11.6.2
+      - name: npm update
+        run: npm install -g npm@latest
 
       - name: Publish NPM
         run: ./gen-typescript.sh release ${VERSION}
@@ -162,12 +162,10 @@ jobs:
           cache: npm
           node-version-file: ".nvmrc"
 
-      - run: npm install
+      - run: npm ci
 
-      # See https://docs.npmjs.com/trusted-publishers
-      # Find the latest version with `npm info npm@latest version`
-      - name: Install suitable NPM version for trusted publishing
-        run: npm install -g npm@11.6.2
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Publish NPM prerelease
         run: ./gen-typescript.sh prerelease ${VERSION}

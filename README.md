@@ -1,5 +1,5 @@
 # Bridget
-This repo contains the thrift definitions defining the API between native layers (iOS, Android) and [Webview](https://github.com/guardian/dotcom-rendering/tree/main/apps-rendering).
+This repo contains the thrift definitions defining the API between native layers (iOS, Android) and [Webview](https://github.com/guardian/dotcom-rendering).
 
 The repo is also responsible for generating and publishing packages to be used by iOS, Android and the Webview.
 

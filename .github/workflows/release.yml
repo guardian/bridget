@@ -71,7 +71,7 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Publish NPM
-        run: ./gen-typescript.sh release ${VERSION}
+        run: ./npm-publish.sh release ${VERSION}
         env:
           VERSION: ${{ needs.version_check.outputs.version }}
 
@@ -168,7 +168,7 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Publish NPM prerelease
-        run: ./gen-typescript.sh prerelease ${VERSION}
+        run: ./npm-publish.sh prerelease ${VERSION}
         env:
           VERSION: ${{ needs.prerelease_get_version.outputs.version }}
 

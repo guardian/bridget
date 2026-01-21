@@ -20,8 +20,9 @@ cd bridget
 
 # create package.json
 npm init -y
-../node_modules/.bin/json -I -f package.json -e 'this.types="index.d.ts"'
-../node_modules/.bin/json -I -f package.json -e 'this.name="@guardian/bridget"'
+npm pkg set types="index.d.ts"
+npm pkg set name="@guardian/bridget"
+npm pkg set repository.url="https://github.com/guardian/bridget"
 
 # add README to package
 cp ../README.md README.md

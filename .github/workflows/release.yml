@@ -4,14 +4,18 @@ on:
   push:
     branches:
       - main
+  release:
+    types: [published] # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
 
 permissions:
   contents: write
   pull-requests: write
+  id-token: write
 
 jobs:
   version_check:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     outputs:
       versionChanged: ${{ steps.get_version.outputs.versionChanged }}
       version: ${{ steps.get_version.outputs.version }}
@@ -31,6 +35,7 @@ jobs:
 
   changesets_release_pr:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     outputs:
       hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     steps:
@@ -40,7 +45,9 @@ jobs:
           cache: npm
           node-version-file: ".nvmrc"
 
-      - run: npm install
+      - run: npm ci
+
+      - run: npm install -g npm@latest
 
       - uses: changesets/action@v1
         id: changesets
@@ -58,12 +65,14 @@ jobs:
           cache: npm
           node-version-file: ".nvmrc"
 
-      - run: npm install
+      - run: npm ci
+
+      - name: npm update
+        run: npm install -g npm@latest
 
       - name: Publish NPM
-        run: ./gen-typescript.sh release ${VERSION}
+        run: ./npm-publish.sh release ${VERSION}
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           VERSION: ${{ needs.version_check.outputs.version }}
 
   native_release:
@@ -124,3 +133,72 @@ jobs:
           publish: "echo 'New tag:'"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Prerelease jobs (triggered by manual GitHub prerelease creation)
+  prerelease_get_version:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.release.prerelease
+    outputs:
+      version: ${{ steps.version_step.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version from latest tag
+        id: version_step
+        run: |
+          VERSION=$(git describe --tags --abbrev=0)
+          echo $VERSION
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+  prerelease_npm:
+    runs-on: ubuntu-latest
+    needs: prerelease_get_version
+    if: github.event_name == 'release' && github.event.release.prerelease
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version-file: ".nvmrc"
+
+      - run: npm ci
+
+      - name: Update npm
+        run: npm install -g npm@latest
+
+      - name: Publish NPM prerelease
+        run: ./npm-publish.sh prerelease ${VERSION}
+        env:
+          VERSION: ${{ needs.prerelease_get_version.outputs.version }}
+
+  prerelease_native:
+    runs-on: ubuntu-latest
+    needs: prerelease_get_version
+    if: github.event_name == 'release' && github.event.release.prerelease
+    strategy:
+      fail-fast: false # do not cancel other in progress jobs if any single one fails
+      matrix:
+        include:
+          - platform: android
+            repository: bridget-android
+          - platform: ios
+            repository: bridget-swift
+
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          owner: guardian
+          repositories: ${{ format('bridget,{0}', matrix.repository) }} # e.g "bridget,bridget-swift"
+
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/generate-native-package
+        with:
+          access_token: ${{ steps.app-token.outputs.token }}
+          platform: ${{ matrix.platform }}
+          release_type: "prerelease"
+          version: ${{ needs.prerelease_get_version.outputs.version }}

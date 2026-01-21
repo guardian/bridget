@@ -2,4 +2,4 @@
 "@guardian/bridget": patch
 ---
 
-testy
+Add repository URL to published package.json

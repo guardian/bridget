@@ -23,6 +23,9 @@ npm init -y
 ../node_modules/.bin/json -I -f package.json -e 'this.types="index.d.ts"'
 ../node_modules/.bin/json -I -f package.json -e 'this.name="@guardian/bridget"'
 
+# add README to package
+cp ../README.md README.md
+
 # generate JavaScript files with type declarations
 ../node_modules/.bin/tsc --init --declaration --target ES2016
 ../node_modules/.bin/tsc

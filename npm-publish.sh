@@ -20,7 +20,6 @@ cd bridget
 
 # create package.json
 npm init -y
-echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
 ../node_modules/.bin/json -I -f package.json -e 'this.types="index.d.ts"'
 ../node_modules/.bin/json -I -f package.json -e 'this.name="@guardian/bridget"'
 

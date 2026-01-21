@@ -1,5 +1,11 @@
 # bridget
 
+## 8.7.4
+
+### Patch Changes
+
+- fc4c026: Add repository URL to published package.json
+
 ## 8.7.3
 
 ### Patch Changes

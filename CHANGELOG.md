@@ -1,5 +1,12 @@
 # bridget
 
+## 8.7.3
+
+### Patch Changes
+
+- 7c2c001: add README to package
+- 52bbd07: use npm trusted publishing
+
 ## 8.7.2
 
 ### Patch Changes

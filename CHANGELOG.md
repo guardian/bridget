@@ -1,5 +1,11 @@
 # bridget
 
+## 8.7.5
+
+### Patch Changes
+
+- 92e7a75: Bump lodash from 4.17.21 to 4.17.23
+
 ## 8.7.4
 
 ### Patch Changes

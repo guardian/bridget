@@ -1,5 +1,11 @@
 # bridget
 
+## 8.7.6
+
+### Patch Changes
+
+- f4fb81f: Bump minimatch from 3.1.2 to 3.1.5
+
 ## 8.7.5
 
 ### Patch Changes

@@ -166,6 +166,10 @@ service Videos {
      * On iOS, this method will always return false
      */
     bool setFullscreen(1:bool isFullscreen),
+    /*
+    * This method is used by the web layer to check if autoplaying videos are enabled in the in-app settings.
+    * */
+    bool isAutoplayEnabled()
 }
 
 service Metrics {

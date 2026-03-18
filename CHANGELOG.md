@@ -1,5 +1,11 @@
 # bridget
 
+## 8.8.0
+
+### Minor Changes
+
+- 64964d6: Adds isAutoplayEnabled method to read in-app accessibility settings.
+
 ## 8.7.6
 
 ### Patch Changes

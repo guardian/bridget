@@ -1,5 +1,11 @@
 # bridget
 
+## 8.9.0
+
+### Minor Changes
+
+- dc0c221: Add Audio service
+
 ## 8.8.0
 
 ### Minor Changes

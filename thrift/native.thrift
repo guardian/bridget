@@ -130,6 +130,15 @@ service Notifications {
     bool isFollowing(1:Topic topic),
 }
 
+struct MatchNotificationsAvailability {
+    1: required bool isAvailable;
+    2: optional string unavailableReason;
+}
+
+service MatchNotifications {
+    MatchNotificationsAvailability isAvailable(),
+}
+
 service ListenToArticle {
     bool isAvailable(1: string articleId)
     i32  getAudioDurationSeconds (1: string articleId)

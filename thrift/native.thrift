@@ -135,8 +135,17 @@ struct MatchNotificationsAvailability {
     2: optional string unavailableReason;
 }
 
+struct FootballTeam {
+    1: required string id;
+}
+
+struct FootballMatch {
+    1: required FootballTeam homeTeam;
+    2: required FootballTeam awayTeam;
+}
+
 service MatchNotifications {
-    MatchNotificationsAvailability isAvailable(),
+    MatchNotificationsAvailability isAvailable(1: FootballMatch footballMatch),
 }
 
 service ListenToArticle {

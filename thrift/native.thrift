@@ -136,8 +136,9 @@ struct MatchNotificationsAvailability {
 }
 
 struct FootballTeam {
-    1: required string id; // Team PA id
-    2: required string name; // Team name
+    1: required string paId; 
+    2: required string name; 
+    3: required string tagId;
 }
 
 struct FootballMatch {

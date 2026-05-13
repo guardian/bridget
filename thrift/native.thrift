@@ -67,6 +67,12 @@ enum MediaEvent {
     percent50 = 4,
     percent75 = 5,
     end = 6
+    pause = 7
+    mute = 8
+    unmute = 9
+    enter_fullscreen = 10
+    exit_fullscreen = 11
+    view = 12
 }
 
 struct VideoEvent {

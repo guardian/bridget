@@ -1,5 +1,11 @@
 # bridget
 
+## 8.9.2
+
+### Patch Changes
+
+- 98fa575: Adds new media event types to native thrift
+
 ## 8.9.1
 
 ### Patch Changes

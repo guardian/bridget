@@ -138,7 +138,6 @@ struct MatchNotificationsAvailability {
 struct FootballTeam {
     1: required string paId; 
     2: required string name; 
-    3: required string tagId;
 }
 
 struct FootballMatch {

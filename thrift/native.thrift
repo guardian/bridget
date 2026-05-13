@@ -136,6 +136,25 @@ service Notifications {
     bool isFollowing(1:Topic topic),
 }
 
+struct MatchNotificationsAvailability {
+    1: required bool isAvailable;
+    2: optional string unavailableReason;
+}
+
+struct FootballTeam {
+    1: required string paId; 
+    2: required string name; 
+}
+
+struct FootballMatch {
+    1: required FootballTeam homeTeam;
+    2: required FootballTeam awayTeam;
+}
+
+service MatchNotifications {
+    MatchNotificationsAvailability isAvailable(1: FootballMatch footballMatch),
+}
+
 service ListenToArticle {
     bool isAvailable(1: string articleId)
     i32  getAudioDurationSeconds (1: string articleId)

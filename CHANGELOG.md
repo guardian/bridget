@@ -1,5 +1,11 @@
 # bridget
 
+## 8.10.0
+
+### Minor Changes
+
+- 6ebde6a: Add match notification service
+
 ## 8.9.2
 
 ### Patch Changes

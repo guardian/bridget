@@ -73,6 +73,7 @@ enum MediaEvent {
     enter_fullscreen = 10
     exit_fullscreen = 11
     view = 12
+    resume = 13
 }
 
 struct VideoEvent {

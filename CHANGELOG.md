@@ -1,5 +1,11 @@
 # bridget
 
+## 8.11.0
+
+### Minor Changes
+
+- 84264b6: Adds resume media event type for interaction tracking
+
 ## 8.10.0
 
 ### Minor Changes

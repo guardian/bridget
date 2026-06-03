@@ -1,5 +1,11 @@
 # bridget
 
+## 8.12.0
+
+### Minor Changes
+
+- d721aae: Adds video attention time tracking function to videos service
+
 ## 8.11.0
 
 ### Minor Changes

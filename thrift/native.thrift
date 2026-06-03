@@ -194,7 +194,7 @@ service Videos {
     * This method is used to submit component attention time tracking updates for videos from the web layer.
     * The argument is a map of videoIds to attention milliseconds, matching the native app tracking submission type.
     */
-    void sendVideoAttentionTime(1:map<string, i64> componentAttentionMs),
+    void sendVideoAttentionTimes(1:map<string, i64> componentAttentionMs),
     /**
      * This method is used by the web layer to instruct the native layer to activate or deactivate fullscreen mode
      * This is currently only required for Android as the fullscreen control on the YouTube player in Android webviews is a no-op

@@ -1,5 +1,11 @@
 # bridget
 
+## 8.13.0
+
+### Minor Changes
+
+- 1de3e73: Adding live activity contract to support the implementation of live activities for football matches during the world cup.
+
 ## 8.12.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@guardian/bridget",
-  "version": "8.12.0",
+  "version": "8.13.0",
   "description": "Thrift files defining the API between native layers (iOS, Android) and [Webview](https://github.com/guardian/dotcom-rendering).",
   "main": "index.js",
   "scripts": {

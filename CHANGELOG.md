@@ -1,5 +1,11 @@
 # bridget
 
+## 8.13.1
+
+### Patch Changes
+
+- 801e5b9: Force github to re-release
+
 ## 8.13.0
 
 ### Minor Changes

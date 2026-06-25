@@ -255,9 +255,11 @@ service Navigation {
  *  - requestSignUp: request to sign up to a newsletter using an email address entered by the user.
  * Returns `true` if the request was successful, `false` if it failed for any reason. Exceptions
  * thrown will be discarded.
+ * - getLoggedInUserEmail: request currently signed in users email address. Blank if not signed in.
  */
 service Newsletters {
-    bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName)
+    bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName),
+    string getLoggedInUserEmail()
 }
 
 service Interaction {

@@ -1,5 +1,11 @@
 # bridget
 
+## 8.13.2
+
+### Patch Changes
+
+- 6295e22: Bump brace-expansion from 1.1.11 to 1.1.18
+
 ## 8.13.1
 
 ### Patch Changes

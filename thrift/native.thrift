@@ -248,6 +248,10 @@ service Navigation {
     void openPrivacyPolicy()
 }
 
+struct MaybeEmail {
+  1: optional string emailAddress
+}
+
 /**
  * Service to manage requests from the weblayer related to newsletter subscriptions.
  * added  version 2.0.0
@@ -259,7 +263,7 @@ service Navigation {
  */
 service Newsletters {
     bool requestSignUp(1: string emailAddress, 2:string newsletterIdentityName),
-    string getLoggedInUserEmail()
+    MaybeEmail getLoggedInUserEmail()
 }
 
 service Interaction {

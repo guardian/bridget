@@ -1,5 +1,11 @@
 # bridget
 
+## 8.14.0
+
+### Minor Changes
+
+- a4e118e: Get logged in users email (or blank if they are not logged in).
+
 ## 8.13.2
 
 ### Patch Changes

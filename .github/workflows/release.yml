@@ -24,7 +24,7 @@ jobs:
         with:
           # Get the latest 2 commits so we can compare the versions in package.json
           fetch-depth: 2
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: npm
           node-version-file: ".nvmrc"
@@ -43,7 +43,7 @@ jobs:
       hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: npm
           node-version-file: ".nvmrc"
@@ -63,7 +63,7 @@ jobs:
     if: needs.changesets_release_pr.outputs.hasChangesets == 'false' && needs.version_check.outputs.versionChanged == 'true'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: npm
           node-version-file: ".nvmrc"
@@ -160,7 +160,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: npm
           node-version-file: ".nvmrc"

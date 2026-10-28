@@ -24,7 +24,10 @@ jobs:
         with:
           # Get the latest 2 commits so we can compare the versions in package.json
           fetch-depth: 2
-
+      - uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version-file: ".nvmrc"
       - name: Get version
         id: get_version
         run: |

@@ -8,5 +8,10 @@ updates:
     labels:
       - "dependencies"
   - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: 'daily'   
+      interval: 'daily'
+  - package-ecosystem: 'docker'
+    directory: '/'
+    schedule:
+      interval: 'daily'

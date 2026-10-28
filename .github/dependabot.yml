@@ -7,3 +7,6 @@ updates:
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
+  - package-ecosystem: 'github-actions'
+    schedule:
+      interval: 'daily'   

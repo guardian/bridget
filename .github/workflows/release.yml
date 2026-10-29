@@ -20,7 +20,7 @@ jobs:
       versionChanged: ${{ steps.get_version.outputs.versionChanged }}
       version: ${{ steps.get_version.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # Get the latest 2 commits so we can compare the versions in package.json
           fetch-depth: 2
@@ -42,7 +42,7 @@ jobs:
     outputs:
       hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           cache: npm
@@ -62,7 +62,7 @@ jobs:
     needs: [changesets_release_pr, version_check]
     if: needs.changesets_release_pr.outputs.hasChangesets == 'false' && needs.version_check.outputs.versionChanged == 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           cache: npm
@@ -100,7 +100,7 @@ jobs:
           owner: guardian
           repositories: ${{ format('bridget,{0}', matrix.repository) }} # e.g "bridget,bridget-swift"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Release
         uses: ./.github/actions/generate-native-package
@@ -116,7 +116,7 @@ jobs:
     if: needs.changesets_release_pr.outputs.hasChangesets == 'false' && needs.version_check.outputs.versionChanged == 'true'
     needs: [changesets_release_pr, version_check, npm_release, native_release]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # This tag will get pushed by the Changesets action in the next step!
       - name: Tag local repository
@@ -144,7 +144,7 @@ jobs:
     outputs:
       version: ${{ steps.version_step.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Version from latest tag
         id: version_step
@@ -158,7 +158,7 @@ jobs:
     needs: prerelease_get_version
     if: github.event_name == 'release' && github.event.release.prerelease
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v7
         with:
@@ -197,7 +197,7 @@ jobs:
           owner: guardian
           repositories: ${{ format('bridget,{0}', matrix.repository) }} # e.g "bridget,bridget-swift"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: ./.github/actions/generate-native-package
         with:

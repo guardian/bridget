@@ -52,7 +52,7 @@ jobs:
 
       - run: npm install -g npm@latest
 
-      - uses: changesets/action@v1
+      - uses: changesets/action@v2
         id: changesets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -128,7 +128,7 @@ jobs:
           VERSION: ${{ needs.version_check.outputs.version }}
 
       - name: Create release in GitHub
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           # The actual release process has already completed in jobs npm_release and native_release
           # Changesets will only create the tags/release if it sees "New tag:" in the publish command's output
